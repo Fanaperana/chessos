@@ -1,0 +1,41 @@
+# --- build output and big files ---
+.venv/
+/build/
+/dist/
+/work/
+__pycache__/
+*.pyc
+*.img
+*.img.xz
+
+# --- runtime files written by ChessOS ---
+device/chessos/save/
+device/chessos/shots/
+device/chessos/log.txt
+device/chessos/crash.log
+device/chessos/boot_log.txt
+device/chessos/puzzles/daily/
+
+# --- generated voice (made with the Windows voice on your PC by `setup.ps1 build`;
+#     not redistributed) ---
+device/chessos/assets/voice/*.wav
+device/chessos/assets/voice/index.json
+
+# --- unused Tauri/SvelteKit starter kept locally, not part of ChessOS ---
+/src/
+/src-tauri/
+/static/
+/package.json
+/package-lock.json
+/svelte.config.js
+/tsconfig.json
+/vite.config.js
+/.vscode/
+/.svelte-kit/
+node_modules/
+
+# --- misc ---
+.DS_Store
+Thumbs.db
+.env
+.env.*

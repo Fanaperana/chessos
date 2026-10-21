@@ -1,0 +1,494 @@
+[Event "Lichess puzzle 1XBCI"]
+[Site "https://lichess.org/training/1XBCI"]
+[FEN "8/8/8/5p2/1RP5/1R3bkp/8/6K1 w - - 1 63"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "700"]
+[Themes "advancedPawn deflection endgame mate mateIn2 promotion short"]
+[PuzzleId "1XBCI"]
+
+63. c5 h2+ 64. Kf1 h1=Q# *
+
+[Event "Lichess puzzle 11GLn"]
+[Site "https://lichess.org/training/11GLn"]
+[FEN "6k1/8/6PP/3p4/p3p3/5r2/1p2K3/7R b - - 2 58"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "811"]
+[Themes "advancedPawn attraction crushing endgame exposedKing long promotion rookEndgame"]
+[PuzzleId "11GLn"]
+
+58... Rf6 59. h7+ Kh8 60. g7+ Kxg7 61. h8=Q+ *
+
+[Event "Lichess puzzle 2ApWI"]
+[Site "https://lichess.org/training/2ApWI"]
+[FEN "8/8/8/4p1PB/7K/4kb2/8/8 b - - 0 48"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "897"]
+[Themes "advancedPawn crushing endgame promotion veryLong"]
+[PuzzleId "2ApWI"]
+
+48... Bxh5 49. Kxh5 e4 50. g6 Kf2 51. g7 e3 52. g8=Q *
+
+[Event "Lichess puzzle 1DTVo"]
+[Site "https://lichess.org/training/1DTVo"]
+[FEN "8/6pk/8/R7/1B2n1b1/P3P2p/8/4K3 w - - 0 48"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "947"]
+[Themes "advancedPawn crushing endgame promotion short"]
+[PuzzleId "1DTVo"]
+
+48. Re5 h2 49. Rxe4 h1=Q+ *
+
+[Event "Lichess puzzle 0w16V"]
+[Site "https://lichess.org/training/0w16V"]
+[FEN "3r3k/3P2pp/1p3p2/p3nP2/P1P5/6q1/4Q1B1/3R3K b - - 0 61"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "974"]
+[Themes "advancedPawn backRankMate endgame mate mateIn2 promotion short"]
+[PuzzleId "0w16V"]
+
+61... Ng4 62. Qe8+ Rxe8 63. dxe8=Q# *
+
+[Event "Lichess puzzle 1Svga"]
+[Site "https://lichess.org/training/1Svga"]
+[FEN "5k2/1p3Pp1/p3P3/8/3P1N2/8/PK1n4/4r3 b - - 6 39"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1001"]
+[Themes "advancedPawn crushing endgame promotion short"]
+[PuzzleId "1Svga"]
+
+39... g5 40. Ng6+ Kg7 41. f8=Q+ *
+
+[Event "Lichess puzzle 0hMHX"]
+[Site "https://lichess.org/training/0hMHX"]
+[FEN "2k1r3/2p5/P1p4p/2Np1bp1/1P6/8/2P1r2p/R2K3R b - - 1 32"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1039"]
+[Themes "advancedPawn crushing endgame promotion short"]
+[PuzzleId "0hMHX"]
+
+32... Bg4 33. a7 Kd8 34. a8=Q+ *
+
+[Event "Lichess puzzle 0eX3H"]
+[Site "https://lichess.org/training/0eX3H"]
+[FEN "7k/pp3K2/2p3P1/8/8/7P/P2p4/8 b - - 0 46"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1061"]
+[Themes "advancedPawn endgame exposedKing long mate mateIn3 promotion queenEndgame"]
+[PuzzleId "0eX3H"]
+
+46... d1=Q 47. g7+ Kh7 48. g8=Q+ Kh6 49. Qg6# *
+
+[Event "Lichess puzzle 0660Y"]
+[Site "https://lichess.org/training/0660Y"]
+[FEN "3r3k/3P2pp/4Q1p1/1pp5/3p1q2/pP1P3P/P1P3B1/6K1 b - - 0 30"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1091"]
+[Themes "advancedPawn backRankMate endgame mate mateIn2 promotion short"]
+[PuzzleId "0660Y"]
+
+30... Qc7 31. Qe8+ Rxe8 32. dxe8=Q# *
+
+[Event "Lichess puzzle 1ChJe"]
+[Site "https://lichess.org/training/1ChJe"]
+[FEN "8/8/1p6/p1bK3P/P4k2/8/6p1/1R6 b - - 1 46"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1109"]
+[Themes "advancedPawn crushing endgame promotion veryLong"]
+[PuzzleId "1ChJe"]
+
+46... g1=Q 47. Rxg1 Bxg1 48. h6 Bc5 49. h7 Ke3 50. h8=Q *
+
+[Event "Lichess puzzle 0wFhi"]
+[Site "https://lichess.org/training/0wFhi"]
+[FEN "8/5pk1/QP2p2p/5p2/7N/1qp3P1/5P1P/5BK1 w - - 0 36"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1130"]
+[Themes "advancedPawn advantage endgame long promotion"]
+[PuzzleId "0wFhi"]
+
+36. Qc4 Qxc4 37. Bxc4 c2 38. b7 c1=Q+ *
+
+[Event "Lichess puzzle 26OKn"]
+[Site "https://lichess.org/training/26OKn"]
+[FEN "8/7P/1R6/3k2K1/8/p4P2/1p3P2/2r5 b - - 0 50"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1142"]
+[Themes "advancedPawn crushing endgame promotion short"]
+[PuzzleId "26OKn"]
+
+50... b1=Q 51. Rxb1 Rxb1 52. h8=Q *
+
+[Event "Lichess puzzle 0UPGU"]
+[Site "https://lichess.org/training/0UPGU"]
+[FEN "8/P7/6p1/5k2/3R4/7P/4p1PK/r7 w - - 0 48"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1155"]
+[Themes "advancedPawn crushing defensiveMove endgame master promotion short"]
+[PuzzleId "0UPGU"]
+
+48. Rd8 e1=Q 49. Rf8+ Kg5 *
+
+[Event "Lichess puzzle 1E1Bt"]
+[Site "https://lichess.org/training/1E1Bt"]
+[FEN "6k1/pQ6/3q1p2/4r1pP/8/2P5/PP2p3/1K2R3 w - - 0 36"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1166"]
+[Themes "advancedPawn endgame mate mateIn2 promotion short"]
+[PuzzleId "1E1Bt"]
+
+36. h6 Qd1+ 37. Rxd1 exd1=Q# *
+
+[Event "Lichess puzzle 0fpdd"]
+[Site "https://lichess.org/training/0fpdd"]
+[FEN "8/8/7P/2P2pk1/1P6/6PK/r5B1/5n2 b - - 1 41"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1177"]
+[Themes "advancedPawn crushing endgame master masterVsMaster promotion short"]
+[PuzzleId "0fpdd"]
+
+41... Ne3 42. h7 Rxg2 43. h8=Q *
+
+[Event "Lichess puzzle 21VIR"]
+[Site "https://lichess.org/training/21VIR"]
+[FEN "8/5R1P/3p4/1p1k4/3p4/1Pp4r/P1P3K1/8 b - - 9 44"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1191"]
+[Themes "advancedPawn advantage deflection endgame promotion rookEndgame short"]
+[PuzzleId "21VIR"]
+
+44... Rh5 45. Rf5+ Rxf5 46. h8=Q *
+
+[Event "Lichess puzzle 0eqDy"]
+[Site "https://lichess.org/training/0eqDy"]
+[FEN "6k1/p4pp1/8/8/1P2p1r1/PK6/4RP1p/7B w - - 2 40"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1206"]
+[Themes "advancedPawn crushing endgame promotion short"]
+[PuzzleId "0eqDy"]
+
+40. Bxe4 Rxe4 41. Rxe4 h1=Q *
+
+[Event "Lichess puzzle 27dH8"]
+[Site "https://lichess.org/training/27dH8"]
+[FEN "2r2Rk1/r5Pp/2b1p2Q/p2pP3/P7/8/1Pq3PP/R6K b - - 5 27"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1230"]
+[Themes "advancedPawn endgame mate mateIn1 oneMove promotion"]
+[PuzzleId "27dH8"]
+
+27... Rxf8 28. gxf8=Q# *
+
+[Event "Lichess puzzle 2O9vA"]
+[Site "https://lichess.org/training/2O9vA"]
+[FEN "8/1p6/1K1k4/P1N2p2/4b3/8/8/8 w - - 6 60"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1255"]
+[Themes "advancedPawn crushing endgame promotion veryLong"]
+[PuzzleId "2O9vA"]
+
+60. Nxe4+ fxe4 61. Kxb7 e3 62. a6 e2 63. a7 e1=Q *
+
+[Event "Lichess puzzle 1S4i6"]
+[Site "https://lichess.org/training/1S4i6"]
+[FEN "r4r1k/p2p2pp/5n2/5P2/2B5/Q7/P1pq1PPP/R4KNR w - - 1 23"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1270"]
+[Themes "advancedPawn mate mateIn2 middlegame promotion short"]
+[PuzzleId "1S4i6"]
+
+23. Ne2 Qd1+ 24. Rxd1 cxd1=Q# *
+
+[Event "Lichess puzzle 1i0X1"]
+[Site "https://lichess.org/training/1i0X1"]
+[FEN "3b2k1/8/1pPP4/1P2n2p/5p2/8/8/3K4 b - - 0 49"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1289"]
+[Themes "advancedPawn advantage endgame master promotion short"]
+[PuzzleId "1i0X1"]
+
+49... Kf7 50. c7 Ke8 51. c8=Q *
+
+[Event "Lichess puzzle 12chv"]
+[Site "https://lichess.org/training/12chv"]
+[FEN "8/8/R5PK/8/7r/1k6/p7/8 w - - 1 56"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1307"]
+[Themes "advancedPawn crushing endgame long promotion rookEndgame"]
+[PuzzleId "12chv"]
+
+56. Kg7 Ra4 57. Rxa4 Kxa4 58. Kf7 a1=Q *
+
+[Event "Lichess puzzle 1uYVt"]
+[Site "https://lichess.org/training/1uYVt"]
+[FEN "8/PB6/1K3p2/6k1/8/r6p/8/8 b - - 2 62"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1326"]
+[Themes "advancedPawn crushing endgame promotion quietMove short"]
+[PuzzleId "1uYVt"]
+
+62... f5 63. Ba6 h2 64. a8=Q *
+
+[Event "Lichess puzzle 1wMN5"]
+[Site "https://lichess.org/training/1wMN5"]
+[FEN "1r5k/1P4p1/1b1B3p/3Qp3/2P1P3/8/3p1qPP/1R5K w - - 0 31"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1342"]
+[Themes "advancedPawn backRankMate endgame mate mateIn2 promotion short"]
+[PuzzleId "1wMN5"]
+
+31. Bxb8 Qe1+ 32. Rxe1 dxe1=Q# *
+
+[Event "Lichess puzzle 27myy"]
+[Site "https://lichess.org/training/27myy"]
+[FEN "8/8/8/8/3PK3/8/5p2/3b1Bk1 w - - 5 49"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1352"]
+[Themes "advancedPawn bishopEndgame crushing deflection endgame promotion short"]
+[PuzzleId "27myy"]
+
+49. Bd3 Bc2 50. Bxc2 f1=Q *
+
+[Event "Lichess puzzle 0KTHi"]
+[Site "https://lichess.org/training/0KTHi"]
+[FEN "6k1/8/p1P5/3p4/3P1b1p/3Kp3/PP2N3/8 b - - 1 39"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1363"]
+[Themes "advancedPawn crushing endgame hangingPiece long promotion"]
+[PuzzleId "0KTHi"]
+
+39... h3 40. Nxf4 h2 41. c7 h1=Q 42. c8=Q+ *
+
+[Event "Lichess puzzle 0DyzF"]
+[Site "https://lichess.org/training/0DyzF"]
+[FEN "8/p5kp/6p1/6b1/N5P1/1P2p1qP/P3Q3/5R1K w - - 3 34"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1378"]
+[Themes "advancedPawn crushing endgame long promotion"]
+[PuzzleId "0DyzF"]
+
+34. Qf3 Qxf3+ 35. Rxf3 e2 36. Kg2 e1=Q *
+
+[Event "Lichess puzzle 25sSL"]
+[Site "https://lichess.org/training/25sSL"]
+[FEN "8/3PN3/p7/1p2K1k1/1P6/2r2p2/8/8 b - - 0 44"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1393"]
+[Themes "advancedPawn crushing endgame long promotion quietMove"]
+[PuzzleId "25sSL"]
+
+44... Rd3 45. Nd5 Rxd5+ 46. Kxd5 f2 47. d8=Q+ *
+
+[Event "Lichess puzzle 1xf07"]
+[Site "https://lichess.org/training/1xf07"]
+[FEN "1r6/1NP1kp1r/p3bR2/PP1pn2p/8/6pP/6P1/5RK1 b - - 0 35"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1408"]
+[Themes "advancedPawn advantage endgame master promotion short"]
+[PuzzleId "1xf07"]
+
+35... Rxb7 36. Rxe6+ fxe6 37. c8=Q *
+
+[Event "Lichess puzzle 0NOv0"]
+[Site "https://lichess.org/training/0NOv0"]
+[FEN "5k2/5p2/5p2/5N2/1p2P1PP/2p1KP2/1P6/3b4 w - - 0 34"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1425"]
+[Themes "advancedPawn advantage endgame long master promotion"]
+[PuzzleId "0NOv0"]
+
+34. bxc3 b3 35. Kd2 b2 36. Kxd1 b1=Q+ *
+
+[Event "Lichess puzzle 0mQOV"]
+[Site "https://lichess.org/training/0mQOV"]
+[FEN "r4B1k/pp1qp2P/2ppn3/4bp2/7P/2N5/PP3PQN/5KR1 b - - 0 21"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1439"]
+[Themes "advancedPawn kingsideAttack mate mateIn2 middlegame promotion short"]
+[PuzzleId "0mQOV"]
+
+21... Rxf8 22. Qg8+ Rxg8 23. hxg8=Q# *
+
+[Event "Lichess puzzle 20jyX"]
+[Site "https://lichess.org/training/20jyX"]
+[FEN "1r3r1k/5Bp1/3Np2p/4P3/1p5R/7P/pP1Q1PPK/1q6 w - - 0 32"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1454"]
+[Themes "advancedPawn crushing master masterVsMaster middlegame promotion short"]
+[PuzzleId "20jyX"]
+
+32. Bxe6 a1=Q 33. Nf7+ Rxf7 *
+
+[Event "Lichess puzzle 1S4BX"]
+[Site "https://lichess.org/training/1S4BX"]
+[FEN "8/1q6/4Pk1p/8/2p1R3/2P2K1P/P7/8 b - - 6 43"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1471"]
+[Themes "advancedPawn crushing defensiveMove endgame long promotion queenRookEndgame"]
+[PuzzleId "1S4BX"]
+
+43... Qb2 44. e7 Qxc3+ 45. Re3 Qc2 46. e8=Q *
+
+[Event "Lichess puzzle 1oUkz"]
+[Site "https://lichess.org/training/1oUkz"]
+[FEN "6k1/1N4pp/3r1p2/2P5/p7/5P1P/5KP1/8 b - - 0 38"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1483"]
+[Themes "advancedPawn crushing endgame hangingPiece long promotion"]
+[PuzzleId "1oUkz"]
+
+38... a3 39. cxd6 Kf7 40. d7 a2 41. d8=Q *
+
+[Event "Lichess puzzle 1QXAb"]
+[Site "https://lichess.org/training/1QXAb"]
+[FEN "5k2/1p3p2/2P2P1p/1P4p1/6P1/1b2n2P/8/6K1 b - - 0 32"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1499"]
+[Themes "advancedPawn advantage endgame fork promotion veryLong"]
+[PuzzleId "1QXAb"]
+
+32... bxc6 33. b6 Nd5 34. b7 Nxf6 35. b8=Q+ Kg7 36. Qxb3 *
+
+[Event "Lichess puzzle 1zG2Z"]
+[Site "https://lichess.org/training/1zG2Z"]
+[FEN "6R1/ppk3P1/8/3p4/8/1BP2r2/P2r4/6K1 b - - 0 36"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1514"]
+[Themes "advancedPawn attraction crushing endgame long promotion"]
+[PuzzleId "1zG2Z"]
+
+36... Rxc3 37. Rc8+ Kxc8 38. g8=Q+ Kc7 39. Qg7+ *
+
+[Event "Lichess puzzle 19XIx"]
+[Site "https://lichess.org/training/19XIx"]
+[FEN "8/B7/2RK3p/2P3pk/8/5p1P/4r3/8 w - - 0 52"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1535"]
+[Themes "advancedPawn crushing endgame long promotion"]
+[PuzzleId "19XIx"]
+
+52. Rb6 f2 53. Rb1 Re1 54. c6 f1=Q *
+
+[Event "Lichess puzzle 2EWFS"]
+[Site "https://lichess.org/training/2EWFS"]
+[FEN "1Q6/2p2ppk/1p5p/1P6/2P4P/4r1N1/5pK1/1R2n3 w - - 4 36"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1557"]
+[Themes "advancedPawn crushing endgame long promotion"]
+[PuzzleId "2EWFS"]
+
+36. Kh2 Rxg3 37. Kxg3 f1=Q 38. Rxe1 Qxe1+ *
+
+[Event "Lichess puzzle 1aCJQ"]
+[Site "https://lichess.org/training/1aCJQ"]
+[FEN "1K3k2/1Pnr2p1/8/5p2/8/8/P5R1/8 b - - 6 47"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1574"]
+[Themes "advancedPawn clearance crushing endgame promotion short"]
+[PuzzleId "1aCJQ"]
+
+47... f4 48. Kc8 Re7 49. b8=Q *
+
+[Event "Lichess puzzle 02ICM"]
+[Site "https://lichess.org/training/02ICM"]
+[FEN "4k3/8/8/4N3/1pPP4/pK5P/3n2P1/8 w - - 2 51"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1587"]
+[Themes "advancedPawn crushing endgame knightEndgame long promotion sacrifice"]
+[PuzzleId "02ICM"]
+
+51. Kc2 b3+ 52. Kxd2 a2 53. Kc3 a1=Q+ *
+
+[Event "Lichess puzzle 2GOO3"]
+[Site "https://lichess.org/training/2GOO3"]
+[FEN "6R1/ppp1R3/2b2r1k/6qp/2PQ4/8/P1P3p1/6K1 w - - 12 38"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1605"]
+[Themes "advancedPawn crushing deflection endgame exposedKing promotion veryLong"]
+[PuzzleId "2GOO3"]
+
+38. Rxg5 Rf1+ 39. Kh2 Rh1+ 40. Kg3 g1=Q+ 41. Qxg1 Rxg1+ *
+
+[Event "Lichess puzzle 0ZVOK"]
+[Site "https://lichess.org/training/0ZVOK"]
+[FEN "7R/4kp1P/8/6r1/7K/8/8/8 b - - 2 52"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1621"]
+[Themes "advancedPawn attraction crushing endgame fork long promotion rookEndgame"]
+[PuzzleId "0ZVOK"]
+
+52... Rg7 53. Re8+ Kxe8 54. h8=Q+ Rg8 55. Qxg8+ *
+
+[Event "Lichess puzzle 1wKdP"]
+[Site "https://lichess.org/training/1wKdP"]
+[FEN "5rk1/2P2ppp/1pQ5/2p5/8/2r4P/P1q2PP1/R5K1 b - - 0 24"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1640"]
+[Themes "advancedPawn crushing endgame promotion short"]
+[PuzzleId "1wKdP"]
+
+24... Rc8 25. Qd7 Rf8 26. c8=Q *
+
+[Event "Lichess puzzle 1JNNE"]
+[Site "https://lichess.org/training/1JNNE"]
+[FEN "3R4/2n5/2k1p3/1p1p4/1P1P4/1r5p/p3B2K/6R1 w - - 4 49"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1662"]
+[Themes "advancedPawn advantage endgame promotion short"]
+[PuzzleId "1JNNE"]
+
+49. Rf8 Rb1 50. Rff1 a1=Q *
+
+[Event "Lichess puzzle 28hzk"]
+[Site "https://lichess.org/training/28hzk"]
+[FEN "1r6/5P1p/4K3/2k5/2P5/1p6/8/2R5 b - - 0 47"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1680"]
+[Themes "advancedPawn advantage deflection endgame long promotion rookEndgame"]
+[PuzzleId "28hzk"]
+
+47... b2 48. Rb1 Kxc4 49. Rxb2 Rxb2 50. f8=Q *

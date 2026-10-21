@@ -1,0 +1,9 @@
+# Scripts and code run on Linux (the R36S): always LF, even in Windows checkouts
+* text=auto eol=lf
+*.ps1 text eol=crlf
+
+*.png binary
+*.bmp binary
+*.spr binary
+*.wav binary
+*.ttf binary

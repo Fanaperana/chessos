@@ -1,0 +1,11 @@
+PySDL2 (https://github.com/py-sdl/py-sdl2)
+
+This software is distributed under the Public Domain. Since it is not enough
+anymore to tell people "hey, just do with it whatever you like to do", you can
+consider this software being distributed under the CC0 Public Domain
+Dedication (https://creativecommons.org/publicdomain/zero/1.0/).
+
+In cases where the recipient is not able to accept the CC0 Public Domain
+Dedication, the software is licensed under the zlib license.
+
+This copy is the one bundled with PortMaster (pylibs.zip, 2024.03).

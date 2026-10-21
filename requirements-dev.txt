@@ -1,0 +1,7 @@
+# PC-side tools for building ChessOS (not needed on the R36S)
+pysdl2>=0.9.16
+pysdl2-dll>=2.30
+pillow>=10
+zstandard>=0.22
+fonttools>=4.50
+brotli>=1.1

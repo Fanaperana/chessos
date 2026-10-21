@@ -1,0 +1,494 @@
+[Event "Lichess puzzle 1IWa0"]
+[Site "https://lichess.org/training/1IWa0"]
+[FEN "3r4/1p3k1p/p3p3/2b1B3/P7/8/1PP3PP/4R2K w - - 3 30"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "500"]
+[Themes "backRankMate endgame mate mateIn2 short"]
+[PuzzleId "1IWa0"]
+
+30. Re2 Rd1+ 31. Re1 Rxe1# *
+
+[Event "Lichess puzzle 1kSGq"]
+[Site "https://lichess.org/training/1kSGq"]
+[FEN "6k1/3n1pbp/2Q1p1p1/8/3P4/1P3N2/1r3PPP/6K1 w - - 0 23"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "532"]
+[Themes "backRankMate endgame mate mateIn2 short"]
+[PuzzleId "1kSGq"]
+
+23. Qxd7 Rb1+ 24. Ne1 Rxe1# *
+
+[Event "Lichess puzzle 2LPkB"]
+[Site "https://lichess.org/training/2LPkB"]
+[FEN "2r1R2k/1b4pp/1pn5/3N4/1P1p1pqn/PQ1P4/5PB1/4R1K1 b - - 3 27"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "559"]
+[Themes "backRankMate master mate mateIn1 middlegame oneMove"]
+[PuzzleId "2LPkB"]
+
+27... Rxe8 28. Rxe8# *
+
+[Event "Lichess puzzle 0Qi9H"]
+[Site "https://lichess.org/training/0Qi9H"]
+[FEN "6k1/pp3ppp/1qr2nb1/3Q4/8/P1N4P/1PP2PP1/1R2R1K1 b - - 0 21"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "593"]
+[Themes "backRankMate mate mateIn1 middlegame oneMove"]
+[PuzzleId "0Qi9H"]
+
+21... Nxd5 22. Re8# *
+
+[Event "Lichess puzzle 1UuFK"]
+[Site "https://lichess.org/training/1UuFK"]
+[FEN "3r2k1/5ppp/1Q2b3/1R1r4/8/2p4P/5PP1/6K1 b - - 0 30"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "621"]
+[Themes "backRankMate endgame hangingPiece mate mateIn1 oneMove"]
+[PuzzleId "1UuFK"]
+
+30... Rxb5 31. Qxd8# *
+
+[Event "Lichess puzzle 1QpTh"]
+[Site "https://lichess.org/training/1QpTh"]
+[FEN "3r2k1/5pbp/N1n3p1/8/Q7/8/1P1q1PPP/1R4K1 w - - 0 31"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "653"]
+[Themes "backRankMate endgame mate mateIn2 sacrifice short"]
+[PuzzleId "1QpTh"]
+
+31. Qxc6 Qd1+ 32. Rxd1 Rxd1# *
+
+[Event "Lichess puzzle 1d5P9"]
+[Site "https://lichess.org/training/1d5P9"]
+[FEN "4r3/2p3kp/2b3p1/p4pN1/3q4/Q4P2/6PP/4R2K w - - 2 33"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "683"]
+[Themes "backRankMate endgame mate mateIn2 short"]
+[PuzzleId "1d5P9"]
+
+33. Rxe8 Qd1+ 34. Re1 Qxe1# *
+
+[Event "Lichess puzzle 1OrhF"]
+[Site "https://lichess.org/training/1OrhF"]
+[FEN "6k1/5p1p/3r1p2/5b2/1N6/8/P1p2PPP/2q1Q1K1 w - - 0 30"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "719"]
+[Themes "advancedPawn backRankMate endgame fork mate mateIn2 promotion short"]
+[PuzzleId "1OrhF"]
+
+30. Qxc1 Rd1+ 31. Qxd1 cxd1=Q# *
+
+[Event "Lichess puzzle 1L3kj"]
+[Site "https://lichess.org/training/1L3kj"]
+[FEN "7k/4Nrpp/4P3/5p2/P3n3/3QP3/4K2P/r7 b - - 0 33"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "740"]
+[Themes "backRankMate endgame fork mate mateIn2 short"]
+[PuzzleId "1L3kj"]
+
+33... Rxe7 34. Qd8+ Re8 35. Qxe8# *
+
+[Event "Lichess puzzle 0R8u2"]
+[Site "https://lichess.org/training/0R8u2"]
+[FEN "6k1/6p1/1p5p/p4Q2/4P3/2Pq4/PP1r4/1K2R3 w - - 1 40"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "762"]
+[Themes "backRankMate endgame mate mateIn2 short"]
+[PuzzleId "0R8u2"]
+
+40. Ka1 Rd1+ 41. Rxd1 Qxd1# *
+
+[Event "Lichess puzzle 1JvTz"]
+[Site "https://lichess.org/training/1JvTz"]
+[FEN "2r3k1/1p3ppp/pq6/3QPp2/1P6/P6P/2r3P1/R2R3K b - - 2 25"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "792"]
+[Themes "backRankMate endgame mate mateIn2 sacrifice short"]
+[PuzzleId "1JvTz"]
+
+25... Qf2 26. Qd8+ Rxd8 27. Rxd8# *
+
+[Event "Lichess puzzle 01czg"]
+[Site "https://lichess.org/training/01czg"]
+[FEN "4kr2/p3n3/2p4Q/2PpP1N1/2pB1p2/q1P5/1r3PPP/1R4K1 w - - 0 29"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "808"]
+[Themes "backRankMate fork mate mateIn2 middlegame short"]
+[PuzzleId "01czg"]
+
+29. Rxb2 Qa1+ 30. Rb1 Qxb1# *
+
+[Event "Lichess puzzle 2MwM3"]
+[Site "https://lichess.org/training/2MwM3"]
+[FEN "2r3k1/5ppp/8/p2QPP2/1p4qP/1Pr1P1B1/6PK/3R4 b - - 0 36"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "820"]
+[Themes "backRankMate endgame mate mateIn2 sacrifice short"]
+[PuzzleId "2MwM3"]
+
+36... Rxe3 37. Qd8+ Rxd8 38. Rxd8# *
+
+[Event "Lichess puzzle 23MJR"]
+[Site "https://lichess.org/training/23MJR"]
+[FEN "2r3k1/pp3ppp/8/8/1Pb5/3q1NB1/1P3KPP/2R1R3 b - - 1 19"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "844"]
+[Themes "backRankMate mate mateIn2 middlegame short"]
+[PuzzleId "23MJR"]
+
+19... Be6 20. Rxc8+ Bxc8 21. Re8# *
+
+[Event "Lichess puzzle 2GcPC"]
+[Site "https://lichess.org/training/2GcPC"]
+[FEN "5r1k/pppqbQBp/4n3/8/4N2P/1P6/P1PP2P1/5RK1 b - - 0 24"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "861"]
+[Themes "backRankMate mate mateIn2 middlegame short"]
+[PuzzleId "2GcPC"]
+
+24... Nxg7 25. Qxf8+ Bxf8 26. Rxf8# *
+
+[Event "Lichess puzzle 0ohq3"]
+[Site "https://lichess.org/training/0ohq3"]
+[FEN "3r2k1/5ppp/5q2/3p1P2/3bp3/1P4Q1/1r3PPP/1R3RK1 b - - 3 23"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "874"]
+[Themes "backRankMate hangingPiece mate mateIn2 middlegame short"]
+[PuzzleId "0ohq3"]
+
+23... Rb8 24. Qxb8+ Qd8 25. Qxd8# *
+
+[Event "Lichess puzzle 0Vyco"]
+[Site "https://lichess.org/training/0Vyco"]
+[FEN "1n4k1/pQ3ppp/4p3/8/2Pq4/7P/P4PP1/6K1 b - - 0 27"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "887"]
+[Themes "backRankMate endgame mate mateIn2 short"]
+[PuzzleId "0Vyco"]
+
+27... Qb6 28. Qc8+ Qd8 29. Qxd8# *
+
+[Event "Lichess puzzle 1p2ta"]
+[Site "https://lichess.org/training/1p2ta"]
+[FEN "5k2/bpB2ppp/p1p5/8/1PP3Pr/8/P1KP4/4R3 b - - 0 26"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "901"]
+[Themes "backRankMate endgame mate mateIn2 short"]
+[PuzzleId "1p2ta"]
+
+26... Rxg4 27. Bd6+ Kg8 28. Re8# *
+
+[Event "Lichess puzzle 2ELH2"]
+[Site "https://lichess.org/training/2ELH2"]
+[FEN "3k4/2p2r2/p1b1RNB1/5PP1/2r5/5n2/PP6/1K6 w - - 1 33"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "916"]
+[Themes "backRankMate endgame mate mateIn2 short"]
+[PuzzleId "2ELH2"]
+
+33. Bxf7 Nd2+ 34. Ka1 Rc1# *
+
+[Event "Lichess puzzle 0NaiT"]
+[Site "https://lichess.org/training/0NaiT"]
+[FEN "5k2/ppp2ppp/8/2N5/8/5P1P/r7/4R2K b - - 1 33"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "927"]
+[Themes "backRankMate endgame mate mateIn2 short"]
+[PuzzleId "0NaiT"]
+
+33... b6 34. Nd7+ Kg8 35. Re8# *
+
+[Event "Lichess puzzle 0DcQ8"]
+[Site "https://lichess.org/training/0DcQ8"]
+[FEN "r2r2k1/1R3p1p/pN2p1p1/3p4/P2qn3/7Q/5PPP/4R1K1 w - - 4 30"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "938"]
+[Themes "backRankMate fork mate mateIn2 middlegame short"]
+[PuzzleId "0DcQ8"]
+
+30. Nxa8 Qxf2+ 31. Kh1 Qxe1# *
+
+[Event "Lichess puzzle 1tMN7"]
+[Site "https://lichess.org/training/1tMN7"]
+[FEN "7k/3Q2p1/1q5p/8/8/P7/3p2PP/R3q2K w - - 0 47"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "947"]
+[Themes "advancedPawn backRankMate endgame mate mateIn1 oneMove promotion"]
+[PuzzleId "1tMN7"]
+
+47. Rxe1 dxe1=Q# *
+
+[Event "Lichess puzzle 1pXXX"]
+[Site "https://lichess.org/training/1pXXX"]
+[FEN "4r2r/p2Q3p/kq1B2p1/5P2/3b4/3P4/PP4PP/2R1R2K w - - 3 27"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "960"]
+[Themes "backRankMate hangingPiece mate mateIn1 middlegame oneMove"]
+[PuzzleId "1pXXX"]
+
+27. Rc6 Rxe1# *
+
+[Event "Lichess puzzle 1aCqq"]
+[Site "https://lichess.org/training/1aCqq"]
+[FEN "7k/p1p3pp/8/2b1nrQ1/2B1q3/5N1P/Pr2N1P1/3R1K1R b - - 1 27"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "972"]
+[Themes "backRankMate mate mateIn2 middlegame short"]
+[PuzzleId "1aCqq"]
+
+27... Rxg5 28. Rd8+ Bf8 29. Rxf8# *
+
+[Event "Lichess puzzle 1bldb"]
+[Site "https://lichess.org/training/1bldb"]
+[FEN "6k1/2rb1r2/p3p1Nb/1p1p4/1P1P4/P3P1Q1/6PP/5BK1 w - - 1 31"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "978"]
+[Themes "backRankMate deflection endgame mate mateIn2 short"]
+[PuzzleId "1bldb"]
+
+31. Qxc7 Bxe3+ 32. Kh1 Rxf1# *
+
+[Event "Lichess puzzle 1FNLl"]
+[Site "https://lichess.org/training/1FNLl"]
+[FEN "1r4k1/5pp1/4p2p/p2r4/Q1R5/P3P3/3q1PPP/2R3K1 w - - 2 27"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "986"]
+[Themes "backRankMate endgame mate mateIn2 sacrifice short"]
+[PuzzleId "1FNLl"]
+
+27. R4c2 Qd1+ 28. Rxd1 Rxd1# *
+
+[Event "Lichess puzzle 0pPMf"]
+[Site "https://lichess.org/training/0pPMf"]
+[FEN "5rk1/ppp3pp/3p4/3Pp3/2PnNP2/8/PP4PP/5RK1 w - - 1 22"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "994"]
+[Themes "backRankMate deflection endgame mate mateIn2 short"]
+[PuzzleId "0pPMf"]
+
+22. fxe5 Ne2+ 23. Kh1 Rxf1# *
+
+[Event "Lichess puzzle 03R4H"]
+[Site "https://lichess.org/training/03R4H"]
+[FEN "3r2k1/5ppp/1Q1B1b2/1p6/2p5/8/1Pq2PPP/4R1K1 b - - 1 22"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1017"]
+[Themes "backRankMate endgame mate mateIn2 sacrifice short"]
+[PuzzleId "03R4H"]
+
+22... Qd2 23. Qxd8+ Bxd8 24. Re8# *
+
+[Event "Lichess puzzle 1XQqV"]
+[Site "https://lichess.org/training/1XQqV"]
+[FEN "R4bk1/5ppp/3p1n2/1r2pN2/4P3/2B5/6PP/6K1 b - - 3 26"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1039"]
+[Themes "backRankMate deflection endgame mate mateIn2 pin short"]
+[PuzzleId "1XQqV"]
+
+26... Nxe4 27. Ne7+ Kh8 28. Rxf8# *
+
+[Event "Lichess puzzle 23VDl"]
+[Site "https://lichess.org/training/23VDl"]
+[FEN "R5k1/3r1ppp/p2r4/1p1p4/8/1P6/P1P2P2/4RK2 b - - 4 31"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1065"]
+[Themes "backRankMate endgame mate mateIn2 rookEndgame short xRayAttack"]
+[PuzzleId "23VDl"]
+
+31... Rd8 32. Re8+ Rxe8 33. Rxe8# *
+
+[Event "Lichess puzzle 13awY"]
+[Site "https://lichess.org/training/13awY"]
+[FEN "r5k1/1pp2ppp/3p1q2/b2P3b/1RBPQ3/2P2N1P/r4PP1/4R1K1 b - - 2 20"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1091"]
+[Themes "backRankMate mate mateIn2 middlegame sacrifice short"]
+[PuzzleId "13awY"]
+
+20... Bxf3 21. Qe8+ Rxe8 22. Rxe8# *
+
+[Event "Lichess puzzle 1kqE1"]
+[Site "https://lichess.org/training/1kqE1"]
+[FEN "2b4k/2pP2pp/8/p2Q4/P7/1pN3P1/2q5/6K1 b - - 4 40"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1107"]
+[Themes "backRankMate endgame mate mateIn2 short"]
+[PuzzleId "1kqE1"]
+
+40... Bxd7 41. Qa8+ Bc8 42. Qxc8# *
+
+[Event "Lichess puzzle 1L4jk"]
+[Site "https://lichess.org/training/1L4jk"]
+[FEN "5rk1/7p/p2Pp1p1/1pR1Pp2/1Pb1qN2/8/P2Q2PP/7K w - - 10 32"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1118"]
+[Themes "backRankMate endgame mate mateIn2 short"]
+[PuzzleId "1L4jk"]
+
+32. d7 Qb1+ 33. Qc1 Qxc1# *
+
+[Event "Lichess puzzle 0odX3"]
+[Site "https://lichess.org/training/0odX3"]
+[FEN "6k1/pp1nrppp/8/3RN3/4n3/5N2/PPr2PPP/4R1K1 b - - 0 19"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1137"]
+[Themes "backRankMate mate mateIn2 middlegame short"]
+[PuzzleId "0odX3"]
+
+19... Nxe5 20. Rd8+ Re8 21. Rxe8# *
+
+[Event "Lichess puzzle 1LQQX"]
+[Site "https://lichess.org/training/1LQQX"]
+[FEN "8/6p1/3R3b/2p2Q2/4P3/1Bq1kP2/P5PP/7K w - - 9 50"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1154"]
+[Themes "backRankMate endgame mate mateIn1 oneMove"]
+[PuzzleId "1LQQX"]
+
+50. Qd5 Qe1# *
+
+[Event "Lichess puzzle 16qkV"]
+[Site "https://lichess.org/training/16qkV"]
+[FEN "8/P2k1p2/4p1p1/4P2p/2p2P2/8/2p3PP/Q2q3K w - - 0 38"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1162"]
+[Themes "advancedPawn backRankMate endgame master mate mateIn1 oneMove promotion queenEndgame"]
+[PuzzleId "16qkV"]
+
+38. Qxd1+ cxd1=Q# *
+
+[Event "Lichess puzzle 1UaBH"]
+[Site "https://lichess.org/training/1UaBH"]
+[FEN "R4rk1/5ppp/1p3b2/5b2/8/Q2p1PB1/1Pq5/4R2K b - - 1 29"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1187"]
+[Themes "backRankMate mate mateIn2 middlegame short xRayAttack"]
+[PuzzleId "1UaBH"]
+
+29... Rc8 30. Re8+ Rxe8 31. Rxe8# *
+
+[Event "Lichess puzzle 1zANR"]
+[Site "https://lichess.org/training/1zANR"]
+[FEN "2krr3/1p4pp/p1p1q3/2Q2p2/PP6/2n5/5PPP/R1B1R1K1 w - - 0 18"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1212"]
+[Themes "backRankMate mate mateIn2 middlegame short"]
+[PuzzleId "1zANR"]
+
+18. Rxe6 Rd1+ 19. Re1 Rdxe1# *
+
+[Event "Lichess puzzle 2I9Wn"]
+[Site "https://lichess.org/training/2I9Wn"]
+[FEN "5r1k/ppp1Q1pp/8/8/P7/1P6/q2r1PPP/2R2RK1 b - - 4 23"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1244"]
+[Themes "backRankMate endgame mate mateIn2 short xRayAttack"]
+[PuzzleId "2I9Wn"]
+
+23... Rdxf2 24. Qxf8+ Rxf8 25. Rxf8# *
+
+[Event "Lichess puzzle 0Z4b1"]
+[Site "https://lichess.org/training/0Z4b1"]
+[FEN "2r2k2/1p3ppp/pN3b2/4Np2/3p1P2/7P/bP4P1/4R1K1 b - - 1 23"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1286"]
+[Themes "backRankMate endgame mate mateIn2 short"]
+[PuzzleId "0Z4b1"]
+
+23... Rc2 24. Ned7+ Kg8 25. Re8# *
+
+[Event "Lichess puzzle 2OS8d"]
+[Site "https://lichess.org/training/2OS8d"]
+[FEN "Rr4k1/2q2ppp/4p3/4P3/Q4P2/2p3PP/1PP5/1K6 b - - 2 26"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1314"]
+[Themes "backRankMate endgame mate mateIn2 sacrifice short xRayAttack"]
+[PuzzleId "2OS8d"]
+
+26... cxb2 27. Qe8+ Rxe8 28. Rxe8# *
+
+[Event "Lichess puzzle 0hcSy"]
+[Site "https://lichess.org/training/0hcSy"]
+[FEN "5rk1/2Q2ppp/pp2r3/2p2R2/2PpP3/3q4/PP4PP/5R1K w - - 0 24"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1335"]
+[Themes "backRankMate endgame mate mateIn2 short xRayAttack"]
+[PuzzleId "0hcSy"]
+
+24. Rxf7 Qxf1+ 25. Rxf1 Rxf1# *
+
+[Event "Lichess puzzle 0gtBl"]
+[Site "https://lichess.org/training/0gtBl"]
+[FEN "4r1k1/p4pbp/2p3p1/8/3p4/6Q1/1qbB1PPP/R1R3K1 w - - 0 22"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1387"]
+[Themes "backRankMate mate mateIn2 middlegame sacrifice short"]
+[PuzzleId "0gtBl"]
+
+22. Rxa7 Qxc1+ 23. Bxc1 Re1# *
+
+[Event "Lichess puzzle 1ptoU"]
+[Site "https://lichess.org/training/1ptoU"]
+[FEN "Rr4k1/1rq2ppp/4p3/2bpP3/Qp6/1P5P/3B1PP1/4R1K1 b - - 1 40"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1418"]
+[Themes "backRankMate mate mateIn2 middlegame sacrifice short xRayAttack"]
+[PuzzleId "1ptoU"]
+
+40... Bd4 41. Qe8+ Rxe8 42. Rxe8# *
+
+[Event "Lichess puzzle 1sqPw"]
+[Site "https://lichess.org/training/1sqPw"]
+[FEN "4r1k1/4Qp1p/5np1/8/5N2/8/PPr1NPPP/1b4K1 w - - 1 24"]
+[SetUp "1"]
+[Premove "1"]
+[Rating "1457"]
+[Themes "backRankMate endgame mate mateIn2 sacrifice short"]
+[PuzzleId "1sqPw"]
+
+24. Qxf6 Rc1+ 25. Nxc1 Re1# *
