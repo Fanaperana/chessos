@@ -10,6 +10,8 @@ import zlib
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import sys  # noqa: E402
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "device", "chessos", "assets", "sprites")
 FONT = os.path.join(ROOT, "device", "chessos", "assets", "fonts", "DejaVuSans.ttf")
 SS = 4  # supersampling
@@ -224,6 +226,15 @@ def main():
     sheet.append(save("check", checkmark()))
     sheet.append(save("speaker", speaker()))
     sheet.append(save("mascot", mascot()))
+    from piece_sets import build as build_piece_sets
+    pieces = build_piece_sets(save)
+    # piece-set preview on the "ice" board (light/dark alternating squares)
+    pv = Image.new("RGBA", (12 * 100, 2 * 100), (19, 31, 36, 255))
+    for i, im in enumerate(pieces):
+        x, y = (i % 12) * 100, (i // 12) * 100
+        pv.alpha_composite(Image.new("RGBA", (96, 96), (238, 242, 246, 255) if (i + i // 12) % 2 else (214, 222, 230, 255)), (x, y))
+        pv.alpha_composite(im, (x, y))
+    pv.save(os.path.join(ROOT, "build", "pieces_preview.png"))
     # preview
     W = 12 * 100
     prev = Image.new("RGBA", (W, 400), (19, 31, 36, 255))

@@ -7,8 +7,11 @@ from ..core import Scene
 from ..ui import BG, CARD, CARD_HI, BORDER, TEXT, SUB, WHITE, GREEN, RED, BLUE, GOLD, hint
 from .home import draw_top_stats
 
+from ..board import PIECE_SETS
+from ..ui import THEME_NAMES
+
 GOALS = [10, 20, 30, 50]
-BOARDS = ["green", "brown", "blue"]
+BOARDS = ["ice", "green", "brown", "blue", "slate"]
 
 
 class Settings(Scene):
@@ -29,6 +32,8 @@ class Settings(Scene):
             ("Voice", on("voice"), "voice"),
             ("Sound effects", on("sfx"), "sfx"),
             ("Daily goal", "%d XP" % p.goal(), "goal"),
+            ("Colour theme", (p.setting("theme") or "midnight").title(), "theme"),
+            ("Chess pieces", (p.setting("pieces") or "soft").title(), "pieces"),
             ("Board colours", p.setting("board").title(), "board"),
             ("Swap A / B buttons", on("swap_ab"), "swap_ab"),
             ("Show FPS (beta)", on("fps"), "fps"),
@@ -40,7 +45,7 @@ class Settings(Scene):
         return items
 
     def row_y(self, i):
-        return 60 + i * 38
+        return 56 + i * 31
 
     def update(self, dt, actions):
         st = self.app.puzzles.download_state
@@ -76,6 +81,13 @@ class Settings(Scene):
         elif key == "goal":
             i = GOALS.index(p.goal()) if p.goal() in GOALS else 1
             p.set_setting("goal", GOALS[(i + d) % len(GOALS)])
+            au.sfx("select")
+        elif key in ("theme", "pieces"):
+            names = THEME_NAMES if key == "theme" else PIECE_SETS
+            cur = p.setting(key) or names[0]
+            i = names.index(cur) if cur in names else 0
+            p.set_setting(key, names[(i + d) % len(names)])
+            self.app.apply_settings()
             au.sfx("select")
         elif key == "board":
             i = BOARDS.index(p.setting("board")) if p.setting("board") in BOARDS else 0
@@ -130,18 +142,18 @@ class Settings(Scene):
             v = self.pops[i].get()
             y = self.row_y(i)
             x = 20 + (1 - v) * 40
-            g.rrect(x, y, 600, 32, 10, CARD_HI if i == self.sel else CARD, max(0.0, min(1.0, v)))
+            g.rrect(x, y, 600, 27, 9, CARD_HI if i == self.sel else CARD, max(0.0, min(1.0, v)))
             col = RED[0] if key in ("reset", "exit") else TEXT
-            g.text(label, x + 16, y + 16, 16, col, 900, valign="m")
+            g.text(label, x + 16, y + 13, 16, col, 900, valign="m")
             if value:
                 vc = GREEN[0] if value == "On" else (SUB if value == "Off" else BLUE[0])
-                if key in ("goal", "board", "date"):
+                if key in ("goal", "board", "date", "theme", "pieces"):
                     vw = g.text_size(value, 15, 900)[0]
-                    g.text("▶", x + 588, y + 16, 11, SUB, "sym", align="r", valign="m")
-                    g.text(value, x + 570, y + 16, 15, vc, 900, align="r", valign="m")
-                    g.text("◀", x + 562 - vw, y + 16, 11, SUB, "sym", align="r", valign="m")
+                    g.text("▶", x + 588, y + 13, 11, SUB, "sym", align="r", valign="m")
+                    g.text(value, x + 570, y + 13, 15, vc, 900, align="r", valign="m")
+                    g.text("◀", x + 562 - vw, y + 13, 11, SUB, "sym", align="r", valign="m")
                 else:
-                    g.text(value, x + 584, y + 16, 15, vc, 900, align="r", valign="m")
+                    g.text(value, x + 584, y + 13, 15, vc, 900, align="r", valign="m")
         if self.msg and motion.now() - self.msg[1] < 4:
             g.text(self.msg[0], 320, 448, 14, BLUE[0], 800, align="c")
         else:

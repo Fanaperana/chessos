@@ -18,7 +18,8 @@ DEFAULT = {
     "practice_seen": [],
     "day_offset": 0,
     "last_seen": "",
-    "settings": {"voice": True, "sfx": True, "goal": 20, "board": "green", "swap_ab": False, "fps": False},
+    "settings": {"voice": True, "sfx": True, "goal": 20, "board": "ice", "swap_ab": False, "fps": False,
+                 "theme": "midnight", "pieces": "soft"},
 }
 
 MAX_CROWNS = 3

@@ -5,24 +5,68 @@ import random
 from . import motion
 from .content import COLORS
 
-BG = (19, 31, 36)
-CARD = (32, 47, 54)
-CARD_HI = (44, 62, 71)
-BORDER = (55, 70, 79)
-TEXT = (241, 247, 251)
-SUB = (130, 155, 166)
-LOCK = (55, 70, 79)
-LOCK_SHADE = (38, 52, 59)
+# Colour tokens are lists so apply_theme() can recolour the whole UI in place
+# (every screen imported the same list objects).
+BG = [19, 31, 36]
+CARD = [32, 47, 54]
+CARD_HI = [44, 62, 71]
+BORDER = [55, 70, 79]
+TEXT = [241, 247, 251]
+SUB = [130, 155, 166]
+LOCK = [55, 70, 79]
+LOCK_SHADE = [38, 52, 59]
+FRAME = [14, 22, 26]        # behind the board
+PANEL = [24, 40, 46]        # feedback banner
 WHITE = (255, 255, 255)
 GOLD = COLORS["gold"]
-GREEN = COLORS["green"]
+GREEN = COLORS["green"]     # the theme's main colour (buttons, focus, unit 1)
 RED = COLORS["red"]
 BLUE = COLORS["blue"]
 ORANGE = COLORS["orange"]
 PURPLE = COLORS["purple"]
 
-# GitHub contribution colours (dark mode)
-GRID = [(22, 27, 34), (14, 68, 41), (0, 109, 50), (38, 166, 65), (57, 211, 83)]
+GRID = [[22, 27, 34], [14, 68, 41], [0, 109, 50], [38, 166, 65], [57, 211, 83]]
+
+THEMES = {
+    # name: surfaces, main colour (main, shade, light), activity grid, light?
+    "midnight": {"bg": (19, 31, 36), "card": (32, 47, 54), "card_hi": (44, 62, 71), "border": (55, 70, 79),
+                 "text": (241, 247, 251), "sub": (130, 155, 166), "lock": (55, 70, 79), "lock_shade": (38, 52, 59),
+                 "frame": (14, 22, 26), "panel": (24, 40, 46),
+                 "main": ((88, 204, 2), (70, 163, 2), (215, 255, 184)),
+                 "grid": ((22, 27, 34), (14, 68, 41), (0, 109, 50), (38, 166, 65), (57, 211, 83))},
+    "ice": {"bg": (243, 247, 251), "card": (255, 255, 255), "card_hi": (230, 238, 246), "border": (214, 224, 234),
+            "text": (30, 45, 60), "sub": (98, 116, 134), "lock": (220, 228, 236), "lock_shade": (192, 204, 216),
+            "frame": (206, 216, 226), "panel": (255, 255, 255),
+            "main": ((30, 144, 235), (20, 110, 190), (214, 236, 255)),
+            "grid": ((228, 234, 240), (178, 214, 245), (110, 176, 236), (52, 136, 220), (20, 96, 180))},
+    "ocean": {"bg": (12, 21, 37), "card": (21, 34, 57), "card_hi": (30, 47, 77), "border": (44, 63, 96),
+              "text": (236, 243, 255), "sub": (128, 150, 186), "lock": (44, 63, 96), "lock_shade": (29, 43, 69),
+              "frame": (7, 13, 24), "panel": (18, 30, 52),
+              "main": ((34, 202, 232), (16, 150, 182), (210, 246, 252)),
+              "grid": ((20, 30, 48), (14, 62, 86), (10, 112, 140), (24, 166, 196), (64, 222, 240))},
+    "plum": {"bg": (27, 19, 39), "card": (41, 30, 59), "card_hi": (55, 41, 79), "border": (72, 56, 100),
+             "text": (247, 241, 255), "sub": (162, 146, 192), "lock": (72, 56, 100), "lock_shade": (50, 38, 72),
+             "frame": (17, 11, 26), "panel": (36, 26, 52),
+             "main": ((255, 112, 122), (214, 74, 92), (255, 224, 228)),
+             "grid": ((36, 26, 50), (92, 40, 66), (150, 56, 86), (214, 84, 106), (255, 122, 132))},
+    "forest": {"bg": (15, 23, 17), "card": (25, 37, 28), "card_hi": (35, 51, 39), "border": (50, 70, 54),
+               "text": (238, 246, 236), "sub": (140, 162, 142), "lock": (50, 70, 54), "lock_shade": (34, 49, 37),
+               "frame": (8, 14, 10), "panel": (22, 34, 25),
+               "main": ((255, 184, 40), (212, 144, 10), (255, 240, 204)),
+               "grid": ((24, 34, 26), (74, 70, 24), (138, 116, 20), (206, 158, 24), (255, 196, 48))},
+}
+THEME_NAMES = ["midnight", "ice", "ocean", "plum", "forest"]
+
+
+def apply_theme(name):
+    t = THEMES.get(name, THEMES["midnight"])
+    for token, key in ((BG, "bg"), (CARD, "card"), (CARD_HI, "card_hi"), (BORDER, "border"), (TEXT, "text"),
+                       (SUB, "sub"), (LOCK, "lock"), (LOCK_SHADE, "lock_shade"), (FRAME, "frame"), (PANEL, "panel")):
+        token[:] = t[key]
+    for i in range(3):
+        GREEN[i][:] = t["main"][i]
+    for i in range(5):
+        GRID[i][:] = t["grid"][i]
 
 
 def grid_level(xp, goal):
@@ -161,7 +205,7 @@ class Banner(object):
             return
         cols = {"good": GREEN, "bad": RED, "info": BLUE, "gold": GOLD}[self.kind or "info"]
         main, shade, light = cols
-        g.rect(0, y, 640, 480 - y + 4, (24, 40, 46))
+        g.rect(0, y, 640, 480 - y + 4, PANEL)
         g.rect(0, y, 640, 3, main)
         # icon badge
         pop = motion.Keyframes([0, 1.25, 1], 0.35, delay=0.05)

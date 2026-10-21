@@ -25,6 +25,9 @@ It boots straight into ChessOS. No emulators and no menus to dig through.
 - **Play vs Coach.** A full game against Stockfish at five strengths, Beginner to Master, with Fritz-style live commentary. Every move gets graded (best, good, inaccuracy, mistake, blunder), and the coach spots hanging pieces, forks, missed captures and mates, and names your opening. You also get hints, takebacks and an accuracy score at the end.
 - **Streaks and stats.** A flame streak counter, plus every day you play becomes a square in a GitHub-style contribution grid covering the whole year.
 - **Voice.** Lesson intros, feedback and every move are spoken, e.g. "knight takes e5, check".
+- **Your look.** 5 colour themes (Midnight, Ice, Ocean, Plum, Forest), 3 piece sets (smooth **Soft** pieces, retro **Pixel**, **Classic**) and 5 boards, all switchable in Settings.
+
+  <img src="docs/pieces.png" alt="Soft and Pixel piece sets" width="640">
 - **Animations.** Spring physics and easing modelled on [motion.dev](https://motion.dev), re-implemented for a device without a browser.
 - **Made for the hardware.** D-pad controls, 640×480, runs on the 1.5 GHz quad-core RK3326 with Python 3.7. It also handles the R36S having no clock battery by asking for the date when the clock looks wrong.
 
@@ -33,8 +36,8 @@ It boots straight into ChessOS. No emulators and no menus to dig through.
 | Lesson path | Lesson intro | Puzzle with hint |
 |---|---|---|
 | ![](docs/screenshots/03-popover.png) | ![](docs/screenshots/04-intro.png) | ![](docs/screenshots/06-hint.png) |
-| **Lesson complete** | **Your chess year** | **Settings** |
-| ![](docs/screenshots/08-complete.png) | ![](docs/screenshots/10-stats.png) | ![](docs/screenshots/11-settings.png) |
+| **Lesson complete** | **Your chess year** | **Play vs Coach** |
+| ![](docs/screenshots/08-complete.png) | ![](docs/screenshots/10-stats.png) | ![](docs/screenshots/12-coach.png) |
 
 ## Supported hardware
 
@@ -150,7 +153,7 @@ setup.ps1             one entry point for everything
 
 ## Roadmap
 
-- [ ] **Our own look.** A ChessOS visual identity of our own instead of the Duolingo-inspired one
+- [x] **Our own look.** Colour themes and original Soft / Pixel piece sets
 - [x] **Open voice.** Kokoro clips ship in the repo ([benchmark](docs/tts-benchmark.md))
 - [x] **Coach.** Fritz-style live commentary while you play Stockfish (Play vs Coach)
 - [ ] **Coach in lessons.** The same commentary for puzzles and lesson mistakes

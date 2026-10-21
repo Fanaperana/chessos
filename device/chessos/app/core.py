@@ -68,6 +68,9 @@ class App(object):
         self.audio.voice_on = p.setting("voice")
         self.audio.sfx_on = p.setting("sfx")
         self.input.swap_ab = p.setting("swap_ab")
+        from . import ui, board
+        ui.apply_theme(p.setting("theme") or "midnight")
+        board.PIECE_SET[0] = p.setting("pieces") or "soft"
         self.show_fps = bool(p.setting("fps")) or os.environ.get("CHESSOS_FPS") == "1"
 
     # ---- scenes --------------------------------------------------------------------

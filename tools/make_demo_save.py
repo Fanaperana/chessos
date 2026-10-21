@@ -19,7 +19,8 @@ data = {
     "daily_done": {(today - datetime.timedelta(days=i)).isoformat(): "x" for i in range(1, 9)},
     "puzzles_solved": 214, "lessons_done": 19, "practice_rating": 1184, "practice_seen": [],
     "day_offset": 0, "last_seen": today.isoformat(),
-    "settings": {"voice": True, "sfx": True, "goal": 20, "board": "green", "swap_ab": False, "fps": False},
+    "settings": {"voice": True, "sfx": True, "goal": 20, "board": "ice", "swap_ab": False, "fps": False,
+                 "theme": "midnight", "pieces": "soft"},
 }
 with open(out, "w") as f:
     json.dump(data, f)

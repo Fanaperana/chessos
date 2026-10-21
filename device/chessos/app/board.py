@@ -3,18 +3,24 @@ import math
 
 from . import motion
 from .chess import sq_name, FILES
-from .ui import WHITE, GOLD, RED
+from .ui import WHITE, GOLD, RED, FRAME
 
 THEMES = {
     "green": ((235, 236, 208), (119, 149, 86)),
     "brown": ((240, 217, 181), (181, 136, 99)),
     "blue": ((222, 227, 230), (140, 162, 173)),
+    "ice": ((255, 255, 255), (234, 238, 243)),
+    "slate": ((178, 188, 200), (126, 138, 154)),
 }
+PIECE_SETS = ["soft", "classic", "pixel"]
+PIECE_SET = ["soft"]   # current set (changed from Settings)
 HIGHLIGHT = (255, 255, 51)
 
 
-def piece_sprite(p):
-    return "piece_" + ("w" if p.isupper() else "b") + p.upper()
+def piece_sprite(p, piece_set=None):
+    name = ("w" if p.isupper() else "b") + p.upper()
+    st = piece_set or PIECE_SET[0]
+    return "piece_" + name if st == "classic" else "piece_%s_%s" % (st, name)
 
 
 class Sprite(object):
@@ -210,7 +216,7 @@ class Board(object):
         sq = self.sq
         ox = motion.shake(self.shake_t, 8, 0.35)
         bx, by = self.x + ox, self.y
-        g.rrect(bx - 4, by - 4, sq * 8 + 8, sq * 8 + 8, 10, (14, 22, 26))
+        g.rrect(bx - 4, by - 4, sq * 8 + 8, sq * 8 + 8, 10, FRAME)
 
         def squares(gg, x0=0, y0=0):
             for r in range(8):

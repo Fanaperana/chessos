@@ -5,7 +5,7 @@ import math
 from .. import motion
 from ..core import Scene
 from ..progress import parse_date
-from ..ui import BG, GREEN, TEXT, SUB, BORDER, CARD, button, hint
+from ..ui import BG, GREEN, TEXT, SUB, BORDER, CARD, CARD_HI, button, hint
 
 
 class Splash(Scene):
@@ -40,7 +40,7 @@ class Splash(Scene):
         s = self.logo.get()
         cx, cy = 320, 190
         g.circle(cx, cy + 8, 92 * s, GREEN[1], 0.35)
-        g.circle(cx, cy, 86 * s, (30, 52, 40))
+        g.circle(cx, cy, 86 * s, CARD_HI)
         g.draw_sprite("mascot", cx, cy - 6 + 4 * math.sin(motion.now() * 3), 150 * s, angle=self.rot.get())
         word = "ChessOS"
         x = 320 - g.text_size(word, 48, 900)[0] / 2.0
