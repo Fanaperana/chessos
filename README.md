@@ -113,7 +113,8 @@ For Lichess-style puzzles, where the first move is the opponent's set-up move, a
 |---|---|
 | **Black screen after the logo** | Your panel needs a different screen file. Rebuild with `.\setup.ps1 image -Panel 1` (try 1-7), or edit `FDT` in `extlinux/extlinux.conf` on the BOOT partition to point at a `.dtb` from `ScreenFiles/Panel N/`. |
 | **Only a blinking cursor** | The system is waiting on EASYROMS. Current builds make that mount optional and repair it automatically. On older cards, format the EASYROMS partition as exFAT. |
-| **ChessOS doesn't start / crashes** | Read `chessos_log.txt` on the BOOT partition from your PC. Every run copies its log there. |
+| **ChessOS doesn't start / crashes** | Read `chessos_log.txt` on the EASYROMS drive from your PC. Every run copies its log there. |
+| **BOOT/EASYROMS "needs repair" on the PC** | The handheld lost power while writing. Run `.\setup.ps1 repair`. To avoid it, turn off with START → Power → Power off. |
 | **Wrong date / streak broke** | The R36S has no clock battery. ChessOS asks for the date when the clock looks wrong; you can also set it in START → *Today's date*. |
 | **A/B feel swapped** | START → *Swap A / B buttons*. |
 
@@ -142,12 +143,12 @@ setup.ps1             one entry point for everything
 
 **How the image is built.** `tools/image/build_image.sh` takes the ArkOS-K36 image and writes ChessOS into its ext4 root filesystem with `debugfs`, so no root or loop mounts are needed. It adds a systemd drop-in that starts ChessOS instead of EmulationStation, makes the EASYROMS mounts optional, and installs the boot logo on the FAT partition.
 
-**Voice.** The R36S has no speech engine, so every line is pre-rendered on your PC (`tools/build_audio.py`, Windows voice) and moves are assembled from clips ("knight" + "takes" + "e5").
+**Voice.** Neural TTS is too slow for the R36S, so every fixed line is pre-rendered with [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) (Apache-2.0, voice `af_heart`) and shipped in the repo. Moves are assembled from clips ("knight" + "takes" + "e5"). We benchmarked espeak-ng, Piper and Supertonic on the device: see [docs/tts-benchmark.md](docs/tts-benchmark.md). Piper is the pick for future live speech.
 
 ## Roadmap
 
 - [ ] **Our own look.** A ChessOS visual identity of our own instead of the Duolingo-inspired one
-- [ ] **Open voice.** Replace the Windows voice with an open CPU TTS model, so voice ships with releases
+- [x] **Open voice.** Kokoro clips ship in the repo ([benchmark](docs/tts-benchmark.md))
 - [ ] **Coach.** Fritz-style live commentary while you play against a bot
 - [ ] **Play mode.** Games against an engine at adjustable strength
 - [ ] **Prebuilt images** on GitHub Releases

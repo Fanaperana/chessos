@@ -29,6 +29,17 @@ def parse_date(s):
     return datetime.datetime.strptime(s, "%Y-%m-%d").date()
 
 
+def build_date():
+    """The day this ChessOS build was made (data/build.json). A clock earlier
+    than that is certainly wrong - the R36S boots with the ArkOS image's date."""
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "build.json")
+    try:
+        with open(path) as f:
+            return parse_date(json.load(f)["date"])
+    except Exception:
+        return datetime.date(2025, 1, 1)
+
+
 class Progress(object):
     def __init__(self, path):
         self.path = path
@@ -58,7 +69,7 @@ class Progress(object):
     def clock_suspicious(self):
         """True if the device clock looks wrong (no RTC on the R36S)."""
         t = self.today()
-        if t.year < 2025:
+        if t.year < 2025 or t < build_date():
             return True
         last = self.data.get("last_seen")
         if last:

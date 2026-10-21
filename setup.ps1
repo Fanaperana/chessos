@@ -10,6 +10,7 @@
   .\setup.ps1 image            download ArkOS-K36 and build work\chessos.img (needs WSL)
   .\setup.ps1 flash -Disk N    write work\chessos.img to SD card disk N (admin prompt)
   .\setup.ps1 update -Disk N   refresh ChessOS on an already-flashed card, keeps progress (admin prompt)
+  .\setup.ps1 repair           fix BOOT/EASYROMS after the handheld lost power (chkdsk, admin prompt)
   .\setup.ps1 ttsbench -Drive G   copy the text-to-speech benchmark port to EASYROMS (drive G:)
   .\setup.ps1 all              setup + build + image
 
@@ -17,7 +18,7 @@
            -Panel <1-7>     use another ArkOS-K36 screen file (black screen? try this)
 #>
 param(
-  [Parameter(Position = 0)][ValidateSet("setup", "build", "run", "test", "image", "flash", "update", "ttsbench", "all", "help")]
+  [Parameter(Position = 0)][ValidateSet("setup", "build", "run", "test", "image", "flash", "update", "repair", "ttsbench", "all", "help")]
   [string]$Command = "help",
   [int]$Disk = -1,
   [string]$WorkDir = "$PSScriptRoot\work",
@@ -183,7 +184,16 @@ function Do-TtsBench {
   Write-Host "Done. On the R36S: START > Power > ArkOS menus > Ports > TTS Benchmark"
 }
 
+function Do-Repair {
+  $log = Join-Path $WorkDir "repair.log"
+  New-Item -ItemType Directory -Force $WorkDir | Out-Null
+  Step "Repairing BOOT and EASYROMS (admin prompt)"
+  Start-Process powershell.exe -Verb RunAs -Wait -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$Root\tools\card_repair.ps1`" -Log `"$log`""
+  Get-Content $log | Select-String "before|after|not found"
+}
+
 switch ($Command) {
+  "repair" { Do-Repair }
   "update" { Do-Update }
   "ttsbench" { Do-TtsBench }
   "setup" { Do-Setup }

@@ -31,7 +31,7 @@ sudo chmod 666 /dev/tty1 2>/dev/null
 printf "\033c" > /dev/tty1
 chmod +x "$DIR/piper/piper" "$DIR/piper/espeak-ng" "$DIR/piper/piper_phonemize" 2>/dev/null
 cd "$DIR" && python3 -u bench.py > "$DIR/console.log" 2>&1
-sudo cp "$DIR/results.txt" /boot/chessos_tts_results.txt 2>/dev/null
+sync
 sleep 5
 printf "\033c" > /dev/tty1
 EOF

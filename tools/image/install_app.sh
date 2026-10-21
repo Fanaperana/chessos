@@ -14,6 +14,13 @@ TMP=$(mktemp -d)
 CMD=$TMP/install.debugfs
 
 [ -f "$APP_SRC/main.py" ] || { echo "dist/ missing: run setup.ps1 build"; exit 1; }
+
+# A card that lost power has an unreplayed journal and small errors; debugfs
+# doesn't replay journals, so repair first (this works on a copy, never the card).
+/usr/sbin/e2fsck -fy "$ROOTFS" > "$TMP/repair.log" 2>&1 || true
+if grep -qiE "MODIFIED|recovering journal|Fix\? yes" "$TMP/repair.log"; then
+  echo "  repaired filesystem first (unclean shutdown): $(grep -ciE 'Fix\? yes' "$TMP/repair.log") fix(es)"
+fi
 own() { printf 'sif "%s" uid %s\nsif "%s" gid %s\n' "$1" $ARK "$1" $ARK >> "$CMD"; }
 # debugfs "mkdir" on an existing directory leaves an orphaned inode, so only
 # create directories that are missing

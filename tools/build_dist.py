@@ -45,6 +45,11 @@ def main():
         shutil.rmtree(os.path.join(DIST, "EASYROMS"))
     os.makedirs(PORTS, exist_ok=True)
     copy_tree(os.path.join(DEV, "chessos"), os.path.join(PORTS, "chessos"))
+    # build date: ChessOS treats any clock earlier than this as wrong (no RTC on the R36S)
+    import datetime
+    import json
+    with open(os.path.join(PORTS, "chessos", "data", "build.json"), "w") as f:
+        json.dump({"date": datetime.date.today().isoformat()}, f)
     os.makedirs(os.path.join(PORTS, "chessos", "puzzles", "daily"), exist_ok=True)
     for name in ("ChessOS.sh", "ChessOS Boot Mode.sh"):
         write_lf(os.path.join(DEV, name), os.path.join(PORTS, name))
