@@ -1,8 +1,14 @@
 """Pre-render ChessOS speech + sound effects into WAV files.
 
-Speech uses the Windows SAPI voice (default: Zira) because the R36S has no
-TTS engine. Each line from app.content.spoken_lines() becomes one clip and is
-listed in assets/voice/index.json  ({"text": "file.wav"}).
+Each line from app.content.spoken_lines() becomes one clip, listed in
+assets/voice/index.json ({"text": "file.wav"}). Two engines:
+
+  kokoro  Kokoro-82M (Apache-2.0) via kokoro-onnx - natural voice, clips can
+          be redistributed. Used when the model files are found in
+          CHESSOS_KOKORO_DIR (default: work/kokoro).
+  sapi    the Windows speech voice (fallback; clips not redistributable).
+
+Env: CHESSOS_TTS=kokoro|sapi  CHESSOS_KOKORO_VOICE=af_heart  CHESSOS_VOICE (SAPI name)
 """
 import array
 import hashlib
@@ -22,6 +28,44 @@ VOICE_DIR = os.path.join(ROOT, "device", "chessos", "assets", "voice")
 SFX_DIR = os.path.join(ROOT, "device", "chessos", "assets", "sfx")
 RATE = 22050
 VOICE = os.environ.get("CHESSOS_VOICE", "Microsoft Zira Desktop")
+KOKORO_DIR = os.environ.get("CHESSOS_KOKORO_DIR", os.path.join(ROOT, "work", "kokoro"))
+KOKORO_MODEL = os.path.join(KOKORO_DIR, "kokoro-v1.0.onnx")
+KOKORO_VOICES = os.path.join(KOKORO_DIR, "voices-v1.0.bin")
+KOKORO_VOICE = os.environ.get("CHESSOS_KOKORO_VOICE", "af_heart")
+
+
+def engine():
+    e = os.environ.get("CHESSOS_TTS")
+    if e:
+        return e
+    return "kokoro" if os.path.exists(KOKORO_MODEL) and os.path.exists(KOKORO_VOICES) else "sapi"
+
+
+def synth_kokoro(todo):
+    from kokoro_onnx import Kokoro
+    k = Kokoro(KOKORO_MODEL, KOKORO_VOICES)
+    for i, (path, text) in enumerate(todo):
+        samples, sr = k.create(text, voice=KOKORO_VOICE, speed=1.0, lang="en-us")
+        pcm = array.array("h", (int(max(-1.0, min(1.0, float(v))) * 32767) for v in samples))
+        with wave.open(path, "wb") as w:
+            w.setnchannels(1)
+            w.setsampwidth(2)
+            w.setframerate(sr)
+            w.writeframes(pcm.tobytes())
+        if i % 20 == 0:
+            print("  kokoro %d/%d" % (i + 1, len(todo)))
+
+
+def synth_sapi(todo):
+    lst = os.path.join(ROOT, "build", "voice_list.txt")
+    os.makedirs(os.path.dirname(lst), exist_ok=True)
+    with open(lst, "w", encoding="utf-8") as f:
+        for path, text in todo:
+            f.write(path + "\t" + text + "\n")
+    ps1 = os.path.join(ROOT, "build", "voice.ps1")
+    with open(ps1, "w", encoding="utf-8-sig") as f:
+        f.write(PS.replace("%VOICE%", VOICE).replace("%LIST%", lst))
+    subprocess.check_call(["powershell.exe", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps1])
 
 PS = r"""
 Add-Type -AssemblyName System.Speech
@@ -48,12 +92,13 @@ def say_text(line):
 def trim(path):
     with wave.open(path, "rb") as w:
         n = w.getnframes()
+        rate = w.getframerate()
         data = array.array("h", w.readframes(n))
     th = 300
     start = next((i for i, v in enumerate(data) if abs(v) > th), 0)
     end = len(data) - next((i for i, v in enumerate(reversed(data)) if abs(v) > th), 0)
-    start = max(0, start - int(RATE * 0.02))
-    end = min(len(data), end + int(RATE * 0.06))
+    start = max(0, start - int(rate * 0.02))
+    end = min(len(data), end + int(rate * 0.06))
     data = data[start:end]
     peak = max(1, max(abs(v) for v in data)) if data else 1
     g = min(3.0, 26000.0 / peak)
@@ -61,12 +106,28 @@ def trim(path):
     with wave.open(path, "wb") as w:
         w.setnchannels(1)
         w.setsampwidth(2)
-        w.setframerate(RATE)
+        w.setframerate(rate)
         w.writeframes(data.tobytes())
 
 
 def build_voice():
     os.makedirs(VOICE_DIR, exist_ok=True)
+    eng = engine()
+    tag = "kokoro:" + KOKORO_VOICE if eng == "kokoro" else "sapi:" + VOICE
+    marker = os.path.join(VOICE_DIR, "engine.txt")
+    old = open(marker).read().strip() if os.path.exists(marker) else ""
+    names = {line: hashlib.md5(line.encode("utf-8")).hexdigest()[:10] + ".wav" for line in spoken_lines()}
+    complete = all(os.path.exists(os.path.join(VOICE_DIR, n)) for n in names.values())
+    if old and complete and not os.environ.get("CHESSOS_TTS"):
+        # the repo ships finished Kokoro clips: keep them unless an engine is forced
+        with open(os.path.join(VOICE_DIR, "index.json"), "w", encoding="utf-8") as f:
+            json.dump(names, f, indent=0, ensure_ascii=False)
+        print("voice clips: %d up to date (%s)" % (len(names), old))
+        return
+    if old != tag:  # engine or voice changed: re-render everything
+        for f in os.listdir(VOICE_DIR):
+            if f.endswith(".wav"):
+                os.remove(os.path.join(VOICE_DIR, f))
     index = {}
     todo = []
     for line in spoken_lines():
@@ -76,16 +137,12 @@ def build_voice():
         if not os.path.exists(path):
             todo.append((path, say_text(line)))
     if todo:
-        lst = os.path.join(ROOT, "build", "voice_list.txt")
-        with open(lst, "w", encoding="utf-8") as f:
-            for path, text in todo:
-                f.write(path + "\t" + text + "\n")
-        ps1 = os.path.join(ROOT, "build", "voice.ps1")
-        with open(ps1, "w", encoding="utf-8-sig") as f:
-            f.write(PS.replace("%VOICE%", VOICE).replace("%LIST%", lst))
-        subprocess.check_call(["powershell.exe", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps1])
+        print("voice engine:", tag)
+        (synth_kokoro if eng == "kokoro" else synth_sapi)(todo)
         for path, _ in todo:
             trim(path)
+    with open(marker, "w") as f:
+        f.write(tag)
     # drop stale clips
     keep = set(index.values())
     for f in os.listdir(VOICE_DIR):

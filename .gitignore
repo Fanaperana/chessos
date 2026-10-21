@@ -16,9 +16,7 @@ device/chessos/crash.log
 device/chessos/boot_log.txt
 device/chessos/puzzles/daily/
 
-# --- generated voice (made with the Windows voice on your PC by `setup.ps1 build`;
-#     not redistributed) ---
-device/chessos/assets/voice/*.wav
+# --- voice: the committed clips are Kokoro (Apache-2.0). index.json is regenerated. ---
 device/chessos/assets/voice/index.json
 
 # --- unused Tauri/SvelteKit starter kept locally, not part of ChessOS ---
