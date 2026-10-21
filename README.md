@@ -151,6 +151,14 @@ setup.ps1             one entry point for everything
 
 **Voice.** Neural TTS is too slow for the R36S, so every fixed line is pre-rendered with [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) (Apache-2.0, voice `af_heart`) and shipped in the repo. Moves are assembled from clips ("knight" + "takes" + "e5"). Coach lines that name pieces and squares are spoken live by [Piper](https://github.com/rhasspy/piper), which runs in the background while you play. We benchmarked espeak-ng, Piper and Supertonic on the device: see [docs/tts-benchmark.md](docs/tts-benchmark.md).
 
+## Build your own single-app handheld
+
+ChessOS is also a recipe. It turns an ArkOS handheld into a device that boots
+straight into one app, with in-place card updates, power-cut-safe mounts and a
+PC test harness. [docs/APPLIANCE-GUIDE.md](docs/APPLIANCE-GUIDE.md) explains
+how it all works, the fixes we needed, and a checklist for swapping ChessOS
+for your own app.
+
 ## Roadmap
 
 - [x] **Our own look.** Colour themes and original Soft / Pixel piece sets
