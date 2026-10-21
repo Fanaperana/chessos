@@ -70,6 +70,10 @@ function Do-Build {
     $env:CHESSOS_KOKORO_DIR = $kdir
   }
   Run-Py "$Root\tools\build_audio.py"
+  Step "Chess engine + live voice (Stockfish, Piper)"
+  Run-Py "$Root	oolsetch_engines.py"
+  Step "Chess engine + live voice (Stockfish, Piper)"
+  Run-Py "$Root\tools\fetch_engines.py"
   Step "Boot logo"
   Run-Py "$Root\tools\build_bootlogo.py"
   Step "dist\ (files for the SD card)"

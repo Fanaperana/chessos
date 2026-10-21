@@ -22,6 +22,7 @@ It boots straight into ChessOS. No emulators and no menus to dig through.
 - **Hands-on exercises.** Collect stars with each piece, give check, then solve real puzzles. You get hearts, hints, instant feedback and confetti.
 - **Daily puzzle.** Works offline from a 400-puzzle pack. With Wi-Fi, ChessOS downloads the real [Lichess daily puzzle](https://lichess.org/training/daily) and saves it as PGN.
 - **Practice mode.** Endless puzzles with an Elo-style rating that adapts to you. Drop your own `.pgn` files in and they show up too.
+- **Play vs Coach.** A full game against Stockfish at five strengths, Beginner to Master, with Fritz-style live commentary. Every move gets graded (best, good, inaccuracy, mistake, blunder), and the coach spots hanging pieces, forks, missed captures and mates, and names your opening. You also get hints, takebacks and an accuracy score at the end.
 - **Streaks and stats.** A flame streak counter, plus every day you play becomes a square in a GitHub-style contribution grid covering the whole year.
 - **Voice.** Lesson intros, feedback and every move are spoken, e.g. "knight takes e5, check".
 - **Animations.** Spring physics and easing modelled on [motion.dev](https://motion.dev), re-implemented for a device without a browser.
@@ -132,7 +133,9 @@ device/
       board.py        animated board widget
       scenes/         splash, home path, lesson player, celebrations, stats, settings
       puzzles.py      packs, daily puzzle, Lichess download, practice rating
-      audio.py        voice clips + sound effects (SDL_mixer, aplay fallback)
+      audio.py        voice clips + live Piper voice + sound effects
+      engine.py       Stockfish over UCI, non-blocking
+      coach.py        move grading, tactics, openings, phrase bank
     lib/sdl2/         PySDL2 - the same copy PortMaster runs on these devices
   system/boot.sh      boot session: ChessOS → (exit) power off / restart / ArkOS menus
 tools/                PC build scripts (puzzles, sprites, voice, logo, image, flashing)
@@ -143,14 +146,14 @@ setup.ps1             one entry point for everything
 
 **How the image is built.** `tools/image/build_image.sh` takes the ArkOS-K36 image and writes ChessOS into its ext4 root filesystem with `debugfs`, so no root or loop mounts are needed. It adds a systemd drop-in that starts ChessOS instead of EmulationStation, makes the EASYROMS mounts optional, and installs the boot logo on the FAT partition.
 
-**Voice.** Neural TTS is too slow for the R36S, so every fixed line is pre-rendered with [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) (Apache-2.0, voice `af_heart`) and shipped in the repo. Moves are assembled from clips ("knight" + "takes" + "e5"). We benchmarked espeak-ng, Piper and Supertonic on the device: see [docs/tts-benchmark.md](docs/tts-benchmark.md). Piper is the pick for future live speech.
+**Voice.** Neural TTS is too slow for the R36S, so every fixed line is pre-rendered with [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) (Apache-2.0, voice `af_heart`) and shipped in the repo. Moves are assembled from clips ("knight" + "takes" + "e5"). Coach lines that name pieces and squares are spoken live by [Piper](https://github.com/rhasspy/piper), which runs in the background while you play. We benchmarked espeak-ng, Piper and Supertonic on the device: see [docs/tts-benchmark.md](docs/tts-benchmark.md).
 
 ## Roadmap
 
 - [ ] **Our own look.** A ChessOS visual identity of our own instead of the Duolingo-inspired one
 - [x] **Open voice.** Kokoro clips ship in the repo ([benchmark](docs/tts-benchmark.md))
-- [ ] **Coach.** Fritz-style live commentary while you play against a bot
-- [ ] **Play mode.** Games against an engine at adjustable strength
+- [x] **Coach.** Fritz-style live commentary while you play Stockfish (Play vs Coach)
+- [ ] **Coach in lessons.** The same commentary for puzzles and lesson mistakes
 - [ ] **Prebuilt images** on GitHub Releases
 
 ## Credits

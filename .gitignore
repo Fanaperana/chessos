@@ -16,6 +16,11 @@ device/chessos/crash.log
 device/chessos/boot_log.txt
 device/chessos/puzzles/daily/
 
+# --- engines + live voice: downloaded by tools/fetch_engines.py (GPL Stockfish,
+#     Piper, non-commercial lessac voice) - not stored in git ---
+device/chessos/bin/
+device/chessos/assets/piper/
+
 # --- voice: the committed clips are Kokoro (Apache-2.0). index.json is regenerated. ---
 device/chessos/assets/voice/index.json
 

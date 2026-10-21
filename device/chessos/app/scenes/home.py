@@ -9,7 +9,7 @@ from ..content import UNITS, COLORS
 from ..core import Scene
 from ..progress import MAX_CROWNS
 from ..ui import (BG, CARD, CARD_HI, BORDER, TEXT, SUB, LOCK, LOCK_SHADE, WHITE, GOLD, GREEN, BLUE,
-                  ORANGE, GRID, grid_level, progress_bar, bubble, hint)
+                  ORANGE, PURPLE, GRID, grid_level, progress_bar, bubble, hint)
 
 TOP = 50
 PATH_W = 404
@@ -98,7 +98,7 @@ class Home(Scene):
         self.nodes[self.sel].scale.set(1).spring(1.12, "bouncy")
         self.focus = "path"
         self.side = 0
-        self.side_pop = [motion.Value(0).spring(1, "bouncy", delay=0.15 + i * 0.08) for i in range(3)]
+        self.side_pop = [motion.Value(0).spring(1, "bouncy", delay=0.15 + i * 0.08) for i in range(4)]
         self.side_focus = motion.Value(0)
         self.popover = None
         self.pop_s = motion.Value(0)
@@ -176,7 +176,7 @@ class Home(Scene):
                     self.side = max(0, self.side - 1)
                     self.app.audio.sfx("nav")
                 elif a == "down":
-                    self.side = min(2, self.side + 1)
+                    self.side = min(3, self.side + 1)
                     self.app.audio.sfx("nav")
                 elif a in ("left", "b"):
                     self.focus = "path"
@@ -238,6 +238,9 @@ class Home(Scene):
         elif self.side == 1:
             self.app.push(Lesson(self.app, "practice"), fade=True)
         elif self.side == 2:
+            from .play import PlaySetup
+            self.app.push(PlaySetup(self.app), fade=True)
+        elif self.side == 3:
             from .stats import Stats
             self.app.push(Stats(self.app), fade=True)
 
@@ -386,54 +389,53 @@ class Home(Scene):
         x, w = SIDE_X, SIDE_W
         p = self.app.progress
         # --- daily puzzle card
-        y = TOP + 10
+        y = TOP + 8
         dx = (1 - self.side_pop[0].get()) * 60
-        self.card(g, 0, x + dx, y, w, 150)
-        g.text("Daily Puzzle", x + dx + 12, y + 10, 17, TEXT, 900)
-        g.text(p.today().strftime("%a, %b %d"), x + dx + w - 12, y + 13, 12, SUB, 800, align="r")
+        self.card(g, 0, x + dx, y, w, 132)
+        g.text("Daily Puzzle", x + dx + 12, y + 8, 16, TEXT, 900)
+        g.text(p.today().strftime("%a, %b %d"), x + dx + w - 12, y + 11, 11, SUB, 800, align="r")
         if self.daily_pos is not None:
-            draw_mini(g, self.daily_pos, x + dx + 12, y + 38, 11, p.setting("board"),
+            draw_mini(g, self.daily_pos, x + dx + 12, y + 33, 10, p.setting("board"),
                       flip=self.daily.solver() == "b")
-        tx = x + dx + 112
+        tx = x + dx + 104
         if self.daily_done:
-            g.circle(tx + 14, y + 56, 13, GREEN[0])
-            g.draw_sprite("check", tx + 14, y + 56, 16)
-            g.text("Solved!", tx + 32, y + 48, 15, GREEN[0], 900)
+            g.circle(tx + 13, y + 48, 12, GREEN[0])
+            g.draw_sprite("check", tx + 13, y + 48, 15)
+            g.text("Solved!", tx + 30, y + 40, 15, GREEN[0], 900)
         else:
-            g.text("+15 XP", tx, y + 46, 16, GOLD[0], 900)
+            g.text("+15 XP", tx, y + 38, 16, GOLD[0], 900)
         if self.daily:
-            g.text("Rating %d" % self.daily.rating if self.daily.rating else "Custom", tx, y + 76, 13, SUB, 800)
-            g.text("To move:", tx, y + 94, 13, SUB, 800)
+            g.text("Rating %d" % self.daily.rating if self.daily.rating else "Custom", tx, y + 66, 13, SUB, 800)
+            g.text("To move:", tx, y + 84, 13, SUB, 800)
             side = self.daily.solver()
-            g.circle(tx + 64, y + 103, 8, SUB)
-            g.circle(tx + 64, y + 103, 6.5, WHITE if side == "w" else (30, 30, 30))
-            g.text("LIVE" if self.daily_live else "OFFLINE", tx, y + 114, 11, BLUE[0] if self.daily_live else SUB, 900)
+            g.circle(tx + 64, y + 93, 8, SUB)
+            g.circle(tx + 64, y + 93, 6.5, WHITE if side == "w" else (30, 30, 30))
+            g.text("LIVE" if self.daily_live else "OFFLINE", tx, y + 102, 11, BLUE[0] if self.daily_live else SUB, 900)
         if self.app.puzzles.download_state == "running":
-            g.text("Downloading...", x + dx + 12, y + 132, 11, BLUE[0], 900)
+            g.text("Downloading...", x + dx + 12, y + 116, 11, BLUE[0], 900)
         elif self.focus == "side" and self.side == 0:
-            g.text("A play · X download", x + dx + 12, y + 132, 11, SUB, 800)
-        # --- practice card
-        y = TOP + 172
-        dx = (1 - self.side_pop[1].get()) * 60
-        self.card(g, 1, x + dx, y, w, 52)
-        g.circle(x + dx + 28, y + 26, 18, BLUE[1])
-        g.text(PIECE_GLYPH["N"], x + dx + 28, y + 27, 22, WHITE, "sym", align="c", valign="m")
-        g.text("Practice", x + dx + 54, y + 8, 16, TEXT, 900)
-        g.text("Puzzle rating %d" % p.data.get("practice_rating", 900), x + dx + 54, y + 28, 12, SUB, 800)
+            g.text("A play · X download", x + dx + 12, y + 116, 11, SUB, 800)
+        # --- practice + play cards
+        for i, (title, sub, col, glyph) in enumerate([
+                ("Practice", "Puzzle rating %d" % p.data.get("practice_rating", 900), BLUE[1], "N"),
+                ("Play vs Coach", "%d games played" % p.data.get("games_played", 0), PURPLE[1], "K")]):
+            y = TOP + 148 + i * 54
+            dx = (1 - self.side_pop[1 + i].get()) * 60
+            self.card(g, 1 + i, x + dx, y, w, 46)
+            g.circle(x + dx + 26, y + 23, 16, col)
+            g.text(PIECE_GLYPH[glyph], x + dx + 26, y + 24, 20, WHITE, "sym", align="c", valign="m")
+            g.text(title, x + dx + 50, y + 5, 15, TEXT, 900)
+            g.text(sub, x + dx + 50, y + 25, 12, SUB, 800)
         # --- activity card (GitHub-style grid)
-        y = TOP + 236
-        dx = (1 - self.side_pop[2].get()) * 60
-        self.card(g, 2, x + dx, y, w, 166)
-        g.text("Activity", x + dx + 12, y + 8, 16, TEXT, 900)
+        y = TOP + 258
+        dx = (1 - self.side_pop[3].get()) * 60
+        self.card(g, 3, x + dx, y, w, 138)
+        g.text("Activity", x + dx + 12, y + 6, 15, TEXT, 900)
         goal = p.goal()
         xp = p.xp_today()
-        g.text("%d/%d XP" % (min(xp, 999), goal), x + dx + w - 12, y + 11, 12, GOLD[0] if xp >= goal else SUB, 900, align="r")
-        progress_bar(g, x + dx + 12, y + 34, w - 24, 10, xp / float(goal), GOLD[0] if xp >= goal else ORANGE[0])
-        self.draw_grid(g, x + dx + 12, y + 54, weeks=15)
-        g.text("Less", x + dx + 12, y + 146, 10, SUB, 800)
-        for i in range(5):
-            g.rrect(x + dx + 40 + i * 13, y + 147, 10, 10, 2, GRID[i])
-        g.text("More", x + dx + 108, y + 146, 10, SUB, 800)
+        g.text("%d/%d XP" % (min(xp, 999), goal), x + dx + w - 12, y + 9, 12, GOLD[0] if xp >= goal else SUB, 900, align="r")
+        progress_bar(g, x + dx + 12, y + 30, w - 24, 9, xp / float(goal), GOLD[0] if xp >= goal else ORANGE[0])
+        self.draw_grid(g, x + dx + 12, y + 46, weeks=15, cell=10, gap=2)
         # footer hints
         hint(g, SIDE_X + 2, 457, [("START", "Menu"), ("SELECT", "Stats")], align="l")
 

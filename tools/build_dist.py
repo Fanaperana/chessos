@@ -18,13 +18,14 @@ LF_EXT = (".sh", ".py", ".txt", ".pgn", ".json", ".conf")
 def copy_tree(src, dst):
     for base, dirs, files in os.walk(src):
         rel = os.path.relpath(base, src)
-        dirs[:] = [d for d in dirs if d not in SKIP_DIRS and not (rel == "puzzles" and d == "daily")]
+        dirs[:] = [d for d in dirs if d not in SKIP_DIRS and not (rel == "puzzles" and d == "daily")
+                   and not (rel == "bin" and d == "windows")]  # PC test engines stay on the PC
         os.makedirs(os.path.join(dst, rel), exist_ok=True)
         for f in files:
             if f in SKIP_FILES or f.endswith(".pyc"):
                 continue
             s, d = os.path.join(base, f), os.path.join(dst, rel, f)
-            if f.endswith(LF_EXT):
+            if f.endswith(LF_EXT) and "bin" not in rel.split(os.sep):
                 with open(s, "rb") as fh:
                     data = fh.read().replace(b"\r\n", b"\n")
                 with open(d, "wb") as fh:

@@ -172,7 +172,7 @@ PHRASES = [
     "Choose a piece for promotion.",
     "Day streak!", "You extended your streak!", "Daily goal reached!",
     "Daily puzzle downloaded.", "No internet connection. Using the offline puzzle.",
-    "Practice mode.", "Goodbye!", "What day is it today?",
+    "Practice mode.", "Goodbye!", "What day is it today?", "Let's play!",
 ]
 
 WORDS = ["pawn", "knight", "bishop", "rook", "queen", "king", "takes", "check", "checkmate",
@@ -201,6 +201,8 @@ def spoken_lines():
     for u in UNITS:
         lines.append(u["title"])
     lines += CORRECT + WRONG + PHRASES + WORDS
+    from .coach import static_lines  # the coach's slot-free phrases
+    lines += static_lines()
     for f in "abcdefgh":
         for r in "12345678":
             lines.append(f + r)
