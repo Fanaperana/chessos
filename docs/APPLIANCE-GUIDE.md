@@ -90,8 +90,11 @@ Save data goes next to the app (`/opt/<app>/save`). Logs are copied to
 
 | Command | What it does |
 |---|---|
+| `deploy` | guided: pick the app, build, then **whole OS**, **app only** (Ports menu) or **update** |
 | `setup` | `.venv` + `requirements-dev.txt`; checks WSL + debugfs |
-| `build` | app assets: puzzles, sprites, voice clips, sound effects, engines, boot logo; then `dist/` |
+| `build` | the app's own hook (`device/<app>/build.ps1`), boot logo, then `dist/` |
+| `new-app` / `use` | scaffold an app from a template / switch the active app (`appliance.json`) |
+| `install` | app only: copy it into an existing ArkOS card's Ports menu (no admin) |
 | `run` / `test` | run on the PC; scripted smoke test with screenshots |
 | `image [-Panel N]` | download ArkOS-K36, then `work/chessos.img` via `tools/image/build_image.sh` (WSL) |
 | `flash -Disk N` | write and verify the image (admin prompt, type the disk number twice) |
@@ -241,42 +244,25 @@ Piece sets are sprites named `piece_<set>_<w|b><K|Q|R|B|N|P>`, drawn by
 
 ---
 
-## Part 3 - Swap ChessOS for another app (checklist)
+## Part 3 - Swap ChessOS for another app
 
-Say the new app is **"NoteOS"** in folder `noteos`.
+**Everything is driven by one setting, `appliance.json`.** The build, the image,
+the installer, the boot logo and the launchers all read it, and the
+device-side scripts are templates in `device/system/*.in`.
+Step by step: [DEVELOPER-TUTORIAL.md](DEVELOPER-TUTORIAL.md).
 
-1. **App folder.** Create `device/noteos/` with a `main.py` that honours the contract in 2.1.
-   - Fastest route: copy `device/chessos/`, keep `lib/`, `app/gfx.py`, `inputs.py`,
-     `motion.py`, `audio.py`, `core.py`, `ui.py`, `progress.py` and `main.py`.
-   - Delete the chess modules and scenes, then write your own `scenes/` (start from `splash.py`).
-   - Native app instead? Put the binary in `device/noteos/bin/linux-aarch64/` and make `main.py`
-     (or `boot.sh` directly) run it, passing on its exit code.
-2. **Rename the wiring.** These files mention `chessos` (`grep -rn chessos tools device/system`):
+```powershell
+.\setup.ps1 new-app -Name noteos -Title NoteOS     # scaffold + make it active
+.\setup.ps1 run                                     # try it on the PC
+.\setup.ps1 deploy                                  # whole OS / app only / update
+.\setup.ps1 use -Name chessos                       # switch back any time
+```
 
-   | File | Change |
-   |---|---|
-   | `tools/build_dist.py` | the `copy_tree(... "chessos" ...)` source and target, the `build.json` path, launcher names, zip name |
-   | `tools/image/install_app.sh` | `APP_SRC=…/ports/noteos`, every `/opt/chessos` → `/opt/noteos`, the drop-in file name |
-   | `device/system/boot.sh` | `APP=/opt/noteos`, the log name, env variable names, on-screen text |
-   | `device/system/10-chessos.conf` | rename to `10-noteos.conf`, `ExecStart=/opt/noteos/boot.sh` |
-   | `tools/image/build_image.sh` | the `chessos.img` output name and messages (optional) |
-   | `tools/build_bootlogo.py` | the logo artwork and text |
-   | `setup.ps1` | the `build` steps your app needs (remove the puzzles, engines and voice steps you don't use) |
-   | `device/ChessOS.sh` | the port launcher, if you also want "Option B: run as a port" |
-
-3. **Assets.** Keep or replace fonts (`assets/fonts`), sprites (`tools/build_assets.py`)
-   and sound effects (`tools/build_audio.py`). For voice, list your lines in the content
-   module and run `build_audio.py` with Kokoro.
-4. **Test on the PC**, then build: `setup.ps1 build`, `setup.ps1 test`, `setup.ps1 image`.
-5. **Flash once**: `setup.ps1 flash -Disk N`. After that, iterate with
-   `setup.ps1 update -Disk N` (about a minute per round, data kept).
-6. **Switching an existing ChessOS card to the new app**: install `/opt/noteos`
-   with the update flow, and make sure the old drop-in is removed (add
-   `rm /etc/systemd/system/emulationstation.service.d/10-chessos.conf` to the
-   debugfs script). Otherwise both drop-ins set `ExecStart`, and the file that
-   sorts last wins.
-7. **Back to stock ArkOS**: delete the drop-in file (from the device's terminal,
-   or with debugfs on a copied root partition), then run `systemctl daemon-reload` or reboot.
+- **Switching a card from one app to another**: `update -Disk N` with the new app
+  active. The installer removes any other appliance's systemd drop-in (a
+  `10-*.conf` whose `ExecStart` points into `/opt/`), so exactly one app boots.
+- **Back to stock ArkOS**: delete the drop-in file (from the device's terminal, or
+  with debugfs on a copied root partition), then run `systemctl daemon-reload` or reboot.
 
 ### Porting to a different handheld or ArkOS image
 

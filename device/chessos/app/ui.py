@@ -3,7 +3,16 @@ import math
 import random
 
 from . import motion
-from .content import COLORS
+
+COLORS = {
+    # name: [main, shade, light] - lists, so a colour theme can recolour them in place
+    "green": [[88, 204, 2], [70, 163, 2], [215, 255, 184]],
+    "blue": [[28, 176, 246], [24, 153, 214], [221, 244, 255]],
+    "purple": [[206, 130, 255], [165, 104, 204], [243, 224, 255]],
+    "orange": [[255, 150, 0], [204, 121, 0], [255, 236, 205]],
+    "red": [[255, 75, 75], [234, 43, 43], [255, 223, 224]],
+    "gold": [[255, 200, 0], [229, 164, 0], [255, 243, 199]],
+}
 
 # Colour tokens are lists so apply_theme() can recolour the whole UI in place
 # (every screen imported the same list objects).

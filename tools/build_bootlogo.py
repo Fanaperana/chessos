@@ -1,7 +1,12 @@
-"""Make the ChessOS boot logo for the R36S BOOT partition.
+"""Make the boot logo for the handheld's BOOT partition.
 
 Writes dist/BOOT/logo.bmp and logo_kernel.bmp: 640x480, 8-bit palette,
 RLE8-compressed - the same format as the stock ArkOS R36S logos.
+
+Artwork, in order of preference:
+  device/<app>/assets/bootlogo.png   your own image (any size, scaled to 640x480)
+  otherwise a generated logo from appliance.json's title + tagline
+  (ChessOS also gets its knight mascot).
 """
 import os
 import struct
@@ -11,27 +16,41 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
-from build_assets import mascot  # noqa: E402
+import appliance  # noqa: E402
 
-FONTS = os.path.join(ROOT, "device", "chessos", "assets", "fonts")
+CFG = appliance.load()
+APP_DIR = os.path.join(ROOT, "device", CFG["app"])
+FONTS = os.path.join(APP_DIR, "assets", "fonts")
+if not os.path.exists(os.path.join(FONTS, "Nunito-900.ttf")):
+    FONTS = os.path.join(ROOT, "device", "chessos", "assets", "fonts")
 
 
 def render():
     W, H = 640, 480
+    custom = os.path.join(APP_DIR, "assets", "bootlogo.png")
+    if os.path.exists(custom):
+        return Image.open(custom).convert("RGB").resize((W, H), Image.LANCZOS)
     img = Image.new("RGB", (W, H), (19, 31, 36))
     d = ImageDraw.Draw(img)
-    d.ellipse((320 - 105, 175 - 105, 320 + 105, 175 + 105), fill=(30, 52, 40))
-    m = mascot(190)
-    img.paste(m, (320 - 95, 175 - 102), m)
     big = ImageFont.truetype(os.path.join(FONTS, "Nunito-900.ttf"), 64)
     small = ImageFont.truetype(os.path.join(FONTS, "Nunito-800.ttf"), 20)
-    w1 = d.textlength("Chess", font=big)
-    w2 = d.textlength("OS", font=big)
+    title, tagline = CFG["title"], CFG.get("tagline", "")
+    ty = 300
+    if CFG["app"] == "chessos":
+        from build_assets import mascot
+        d.ellipse((320 - 105, 175 - 105, 320 + 105, 175 + 105), fill=(30, 52, 40))
+        m = mascot(190)
+        img.paste(m, (320 - 95, 175 - 102), m)
+    else:
+        ty = 190
+    # "...OS" titles get the two-tone treatment: "Chess" green + "OS" white
+    head, tail = (title[:-2], title[-2:]) if title.endswith("OS") and len(title) > 2 else (title, "")
+    w1, w2 = d.textlength(head, font=big), d.textlength(tail, font=big)
     x = (W - w1 - w2) / 2
-    d.text((x, 300), "Chess", font=big, fill=(88, 204, 2))
-    d.text((x + w1, 300), "OS", font=big, fill=(241, 247, 251))
-    t = "Learn chess, one day at a time."
-    d.text(((W - d.textlength(t, font=small)) / 2, 392), t, font=small, fill=(130, 155, 166))
+    d.text((x, ty), head, font=big, fill=(88, 204, 2))
+    d.text((x + w1, ty), tail, font=big, fill=(241, 247, 251))
+    if tagline:
+        d.text(((W - d.textlength(tagline, font=small)) / 2, ty + 92), tagline, font=small, fill=(130, 155, 166))
     return img
 
 
@@ -57,7 +76,7 @@ def write_bmp(img, path):
     pal = q.getpalette()[:256 * 3]
     pal += [0] * (256 * 3 - len(pal))
     w, h = q.size
-    data = rle8(list(q.getdata()), w, h)
+    data = rle8(list(q.getdata() if not hasattr(q, 'get_flattened_data') else q.get_flattened_data()), w, h)
     palette = b"".join(struct.pack("<BBBB", pal[i * 3 + 2], pal[i * 3 + 1], pal[i * 3], 0) for i in range(256))
     offset = 14 + 40 + len(palette)
     info = struct.pack("<IiiHHIIiiII", 40, w, h, 1, 8, 1, len(data), 3779, 3779, 256, 256)

@@ -11,7 +11,7 @@ sys.path.insert(0, BASE)
 
 
 def is_device():
-    if os.environ.get("CHESSOS_DEVICE") == "1":
+    if "1" in (os.environ.get("APPLIANCE_DEVICE"), os.environ.get("CHESSOS_DEVICE")):
         return True
     if os.environ.get("CHESSOS_DEVICE") == "0":
         return False

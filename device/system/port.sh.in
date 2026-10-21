@@ -1,0 +1,29 @@
+#!/bin/bash
+# @TITLE@ - ArkOS port launcher ("run it from the Ports menu" install).
+# Copy this file and the "@APP@" folder into /roms/ports/
+
+GAMEDIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)/@APP@"
+CUR_TTY=/dev/tty0
+
+sudo chmod 666 $CUR_TTY 2>/dev/null
+printf "\033c" > $CUR_TTY 2>/dev/null
+echo "Starting @TITLE@..." > $CUR_TTY 2>/dev/null
+
+cd "$GAMEDIR" || exit 1
+
+export APPLIANCE_DEVICE=1 @ENV@_DEVICE=1
+export SDL_GAMECONTROLLERCONFIG_FILE="$GAMEDIR/assets/gamecontrollerdb.txt"
+
+if [ -x "$GAMEDIR/start" ]; then
+  "$GAMEDIR/start" > "$GAMEDIR/log.txt" 2>&1
+else
+  PY="$(command -v python3)"
+  if [ -z "$PY" ]; then
+    echo "@TITLE@ needs python3, which was not found." > $CUR_TTY
+    sleep 5
+    exit 1
+  fi
+  "$PY" main.py > "$GAMEDIR/log.txt" 2>&1
+fi
+
+printf "\033c" > $CUR_TTY 2>/dev/null

@@ -1,5 +1,5 @@
-# ChessOS: boot into ChessOS instead of EmulationStation.
+# @TITLE@: boot into /opt/@APP@ instead of EmulationStation.
 # Delete this file (and run: sudo systemctl daemon-reload) to get stock ArkOS back.
 [Service]
 ExecStart=
-ExecStart=/opt/chessos/boot.sh
+ExecStart=/opt/@APP@/boot.sh

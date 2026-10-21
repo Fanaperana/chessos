@@ -1,21 +1,23 @@
 #!/bin/bash
-# ChessOS session (replaces EmulationStation as the boot program).
-# Exit codes from ChessOS: 10 = power off, 11 = restart, anything else = open
+# @TITLE@ session (replaces EmulationStation as the boot program).
+# Generated from device/system/boot.sh.in with appliance.json - edit the template.
+# Exit codes from the app: 10 = power off, 11 = restart, anything else = open
 # the ArkOS menus (EmulationStation). Leaving EmulationStation returns here.
-# A copy of the log goes to EASYROMS (/roms/chessos_log.txt) so it can be read
+# A copy of the log goes to EASYROMS (/roms/@APP@_log.txt) so it can be read
 # on a PC. Nothing is ever written to the BOOT partition: a power cut while it
 # is being written could stop the handheld from booting.
 
-APP=/opt/chessos
+APP=/opt/@APP@
 ES=/usr/bin/emulationstation/emulationstation.sh
 LOG="$APP/log.txt"
-PCLOG=/roms/chessos_log.txt
+PCLOG=/roms/@APP@_log.txt
 
 sudo chmod 666 /dev/tty1 2>/dev/null
 export TERM=linux
 export XDG_RUNTIME_DIR=/run/user/$UID/
-export CHESSOS_DEVICE=1
-export CHESSOS_FRONTEND=1
+# generic names (read by the shared framework) + the app's own names
+export APPLIANCE_DEVICE=1 APPLIANCE_FRONTEND=1 APPLIANCE_APP=@APP@
+export @ENV@_DEVICE=1 @ENV@_FRONTEND=1
 export SDL_GAMECONTROLLERCONFIG_FILE="$APP/assets/gamecontrollerdb.txt"
 
 say() { printf "%s\n" "$*" > /dev/tty1; }
@@ -39,11 +41,11 @@ fi
 while true; do
   printf "\033c" > /dev/tty1
   say ""
-  say "   ChessOS is starting..."
+  say "   @TITLE@ is starting..."
   {
-    echo "=== ChessOS start $(date) uid=$(id -u) python=$(python3 --version 2>&1)"
+    echo "=== @TITLE@ start $(date) uid=$(id -u) python=$(python3 --version 2>&1)"
     cd "$APP"
-    python3 -u main.py
+    if [ -x "$APP/start" ]; then "$APP/start"; else python3 -u main.py; fi
     echo "=== exit code $?"
   } > "$LOG" 2>&1 &
   pid=$!
@@ -57,7 +59,7 @@ while true; do
   case "$code" in
     10) sync; sudo systemctl poweroff; exit 0 ;;
     11) sync; sudo systemctl reboot; exit 0 ;;
-    0)  "$ES" ;;   # Wi-Fi, updates, games... then back to ChessOS
-    *)  say "   ChessOS stopped (code $code). Opening ArkOS menus..."; sleep 2; "$ES" ;;
+    0)  "$ES" ;;   # Wi-Fi, updates, games... then back to the app
+    *)  say "   @TITLE@ stopped (code $code). Opening ArkOS menus..."; sleep 2; "$ES" ;;
   esac
 done

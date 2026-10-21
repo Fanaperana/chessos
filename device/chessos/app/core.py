@@ -10,7 +10,10 @@ from .audio import Audio
 from .gfx import Gfx
 from .inputs import Input
 from .progress import Progress
-from .puzzles import Puzzles
+try:  # chess-specific; other apps built on this framework don't have it
+    from .puzzles import Puzzles
+except ImportError:
+    Puzzles = None
 from .ui import BG
 
 
@@ -39,21 +42,21 @@ class App(object):
     def __init__(self, base, device=False):
         self.base = base
         self.device = device
-        print("ChessOS: SDL video")
+        print("app: SDL video")
         self.g = Gfx(device=device, scale=int(os.environ.get("CHESSOS_SCALE", "2")))
-        print("ChessOS: input")
+        print("app: input")
         self.input = Input(base)
-        print("ChessOS: audio")
+        print("app: audio")
         self.audio = Audio(base)
-        print("ChessOS: data")
+        print("app: data")
         self.progress = Progress(os.environ.get("CHESSOS_SAVE") or os.path.join(base, "save", "save.json"))
-        self.puzzles = Puzzles(base)
+        self.puzzles = Puzzles(base) if Puzzles else None
         self.stack = []
         self.fade = motion.Value(0)
         self.pending = None
         self.running = True
         self.exit_code = 0
-        self.frontend = os.environ.get("CHESSOS_FRONTEND") == "1"
+        self.frontend = "1" in (os.environ.get("APPLIANCE_FRONTEND"), os.environ.get("CHESSOS_FRONTEND"))
         self.fps = 0.0
         self.show_fps = os.environ.get("CHESSOS_FPS") == "1"
         # test autopilot: CHESSOS_AUTOPILOT="2|shot:home|down|a|0.5|shot:pop|quit"
@@ -68,9 +71,13 @@ class App(object):
         self.audio.voice_on = p.setting("voice")
         self.audio.sfx_on = p.setting("sfx")
         self.input.swap_ab = p.setting("swap_ab")
-        from . import ui, board
+        from . import ui
         ui.apply_theme(p.setting("theme") or "midnight")
-        board.PIECE_SET[0] = p.setting("pieces") or "soft"
+        try:
+            from . import board
+            board.PIECE_SET[0] = p.setting("pieces") or "soft"
+        except ImportError:
+            pass
         self.show_fps = bool(p.setting("fps")) or os.environ.get("CHESSOS_FPS") == "1"
 
     # ---- scenes --------------------------------------------------------------------
@@ -208,4 +215,4 @@ class App(object):
             self._first_frame = True
             import faulthandler
             faulthandler.cancel_dump_traceback_later()
-            print("ChessOS: first frame shown")
+            print("app: first frame shown")

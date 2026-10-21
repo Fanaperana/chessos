@@ -156,8 +156,14 @@ setup.ps1             one entry point for everything
 ChessOS is also a recipe. It turns an ArkOS handheld into a device that boots
 straight into one app, with in-place card updates, power-cut-safe mounts and a
 PC test harness. [docs/APPLIANCE-GUIDE.md](docs/APPLIANCE-GUIDE.md) explains
-how it all works, the fixes we needed, and a checklist for swapping ChessOS
-for your own app.
+how it all works and the fixes we needed. [docs/DEVELOPER-TUTORIAL.md](docs/DEVELOPER-TUTORIAL.md)
+walks you through your own app (Python, native, and what Tauri would take). Swapping
+the app is one setting (`appliance.json`), and one command puts it on a card:
+
+```powershell
+.\setup.ps1 new-app -Name noteos -Title NoteOS
+.\setup.ps1 deploy
+```
 
 ## Roadmap
 

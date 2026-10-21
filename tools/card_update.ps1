@@ -1,5 +1,5 @@
-# Update ChessOS on an already-flashed card (run as Administrator; setup.ps1 update starts it).
-# 1) read the ArkOS root partition  2) refresh /opt/chessos in a copy (WSL)
+# Update the appliance app on an already-flashed card (run as Administrator; setup.ps1 update starts it).
+# 1) read the ArkOS root partition  2) refresh /opt/<app> in a copy (WSL)
 # 3) write back only the changed 4 MiB blocks, each verified.
 param(
   [Parameter(Mandatory = $true)][int]$Disk,
@@ -28,7 +28,7 @@ try {
   Write-Host "1/3 reading the ArkOS system partition (8.6 GB)"
   $ErrorActionPreference = "Continue"
   Run-Py read-part $Disk $ExpectedSize 2 $old
-  Write-Host "2/3 refreshing ChessOS in a copy"
+  Write-Host "2/3 refreshing the app in a copy"
   Copy-Item $old $new -Force
   $wNew = (& wsl.exe -e wslpath -a ($new -replace '\\', '/')).Trim()
   $wRepo = (& wsl.exe -e wslpath -a ((Resolve-Path "$PSScriptRoot\..").Path -replace '\\', '/')).Trim()

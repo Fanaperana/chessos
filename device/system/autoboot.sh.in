@@ -1,6 +1,6 @@
 #!/bin/bash
-# ChessOS boot mode (EXPERIMENTAL)
-# Runs ChessOS before EmulationStation starts, using a systemd drop-in.
+# @TITLE@ boot mode for the ports install (EXPERIMENTAL)
+# Runs @TITLE@ before EmulationStation starts, using a systemd drop-in.
 # Nothing in ArkOS itself is edited; "disable" removes the drop-in again.
 #
 # usage: sudo bash autoboot.sh enable | disable | status
@@ -8,7 +8,7 @@
 GAMEDIR="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
 UNIT="emulationstation.service"
 DROPDIR="/etc/systemd/system/$UNIT.d"
-DROP="$DROPDIR/10-chessos.conf"
+DROP="$DROPDIR/10-@APP@-port.conf"
 
 have_unit() {
   systemctl cat "$UNIT" > /dev/null 2>&1
@@ -23,22 +23,22 @@ case "$1" in
     fi
     mkdir -p "$DROPDIR"
     cat > "$DROP" <<EOF
-# Added by ChessOS (remove this file to undo)
+# Added by @TITLE@ (remove this file to undo)
 [Service]
 TimeoutStartSec=infinity
 ExecStartPre=-/bin/bash "$GAMEDIR/tools/boot_run.sh"
 EOF
     systemctl daemon-reload
-    echo "ChessOS boot mode: ON"
-    echo "ChessOS will start every time the R36S boots."
-    echo "Run 'ChessOS Boot Mode' again to turn it off."
+    echo "@TITLE@ boot mode: ON"
+    echo "@TITLE@ will start every time the handheld boots."
+    echo "Run '@TITLE@ Boot Mode' again to turn it off."
     ;;
   disable)
     rm -f "$DROP"
     rmdir "$DROPDIR" 2> /dev/null
     systemctl daemon-reload
-    echo "ChessOS boot mode: OFF"
-    echo "Your R36S will boot straight into EmulationStation again."
+    echo "@TITLE@ boot mode: OFF"
+    echo "The handheld will boot straight into EmulationStation again."
     ;;
   status)
     if [ -f "$DROP" ]; then echo "enabled"; else echo "disabled"; fi

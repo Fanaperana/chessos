@@ -76,7 +76,7 @@ def main():
         dst = os.path.join(arm, "piper")
         if os.path.isdir(dst):
             shutil.rmtree(dst)
-        t.extractall(arm)  # creates arm/piper/
+        t.extractall(arm, **({"filter": "data"} if hasattr(tarfile, "data_filter") else {}))  # arm/piper/
 
     print("Voice en_US-lessac-low")
     vdir = os.path.join(APP, "assets", "piper")
