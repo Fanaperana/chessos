@@ -165,6 +165,13 @@ the app is one setting (`appliance.json`), and one command puts it on a card:
 .\setup.ps1 deploy
 ```
 
+Prefer clicking to typing? **[ChessOS Studio](docs/STUDIO.md)** is a desktop
+app (Rust + Tauri) that does the same in five steps. You pick the handheld, the
+base OS, your app and a boot logo. Studio then builds the image, writes it to
+the card and verifies it.
+
+![ChessOS Studio](docs/screenshots/studio-boot.png)
+
 ## Roadmap
 
 - [x] **Our own look.** Colour themes and original Soft / Pixel piece sets

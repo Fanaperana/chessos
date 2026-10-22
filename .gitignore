@@ -24,17 +24,12 @@ device/chessos/assets/piper/
 # --- voice: the committed clips are Kokoro (Apache-2.0). index.json is regenerated. ---
 device/chessos/assets/voice/index.json
 
-# --- unused Tauri/SvelteKit starter kept locally, not part of ChessOS ---
-/src/
-/src-tauri/
-/static/
-/package.json
-/package-lock.json
-/svelte.config.js
-/tsconfig.json
-/vite.config.js
-/.vscode/
-/.svelte-kit/
+# --- ChessOS Studio (Tauri) build output ---
+studio/node_modules/
+studio/build/
+studio/.svelte-kit/
+studio/src-tauri/target/
+studio/src-tauri/gen/
 node_modules/
 
 # --- misc ---

@@ -1,0 +1,33 @@
+[
+  {
+    "id": "r36s-k36",
+    "name": "R36S (K36 clone)",
+    "maker": "R36S / K36",
+    "verified": true,
+    "screen": [640, 480],
+    "default_dtb": "rf3536k4ka.dtb",
+    "frontend_service": "emulationstation.service",
+    "notes": "Tested: the release's default screen file works. If the screen stays black, try another file from ScreenFiles.",
+    "base_images": [
+      {
+        "id": "arkos-k36-20250811",
+        "name": "ArkOS-K36 v2.0 (2025-08-11)",
+        "url": "https://github.com/AeolusUX/ArkOS-K36/releases/download/ArkOS.K36.08112025/ArkOS_K36_v2.0_08112025.img.xz",
+        "file": "ArkOS_K36_v2.0_08112025.img.xz",
+        "size": 2061962728,
+        "notes": "Community ArkOS build for K36 / R36S clones by AeolusUX. Ubuntu 19.10, Python 3.7."
+      }
+    ]
+  },
+  {
+    "id": "custom",
+    "name": "Other ArkOS-family handheld",
+    "maker": "R36S original, Anbernic RG351 / RG353 and others",
+    "verified": false,
+    "screen": [640, 480],
+    "default_dtb": null,
+    "frontend_service": "emulationstation.service",
+    "notes": "Bring the ArkOS image made for your device (.img or .img.xz). Studio inspects it: partitions, screen files and the front-end service. Set the screen size to match your device.",
+    "base_images": []
+  }
+]
