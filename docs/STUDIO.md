@@ -137,5 +137,7 @@ cargo test -- --ignored --nocapture
   The image build itself is portable.
 - A build needs about twice the image size free in the work folder (around
   20 GB for ArkOS-K36). You can change the folder in the sidebar.
+- ArkOS-K36's system partition is 8 GB and already 94% full, so an app can
+  use about 360 MB there (ChessOS uses 136 MB). Put large data on EASYROMS.
 - Apps that need a build step (for example ChessOS's `build.ps1`, which
   downloads engines and voices) must run it before you pick the folder.
